@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Convolv | Documentation for the Data Console</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.0.23/css/bulma.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link rel="stylesheet" href="../../fonts/Hack/css/hack-extended.css">
+    <link rel="stylesheet" href="../../fonts/Raleway/Raleway.css">
+    <link rel="stylesheet" href="../../fonts/OpenSans/OpenSans.css">
+    <link rel="stylesheet" href="css/document.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fetch/0.11.0/fetch.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <script src="../../js/datatable.js"></script>
+    <script src="js/smooth-scroll.min.js"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-left">
+          <div class="navbar-item">
+            <img src="img/convolv-logo.png" alt="Convolv logo">
+          </div>
+          <div class="navbar-item">
+            <p class="title is-2">Docs</p>
+          </div>
+        </div>
+        <div class="navbar-right">
+          <div class="navbar-item">
+            <p class="subtitle is-3"><a href="http://mathjs.org/docs/index.html">Mathjs docs</a></p>
+          </div>
+        </div>
+      </nav>
+      <div class="columns">
+        <div class="column is-5">
+          <div id="documentdiv"></div>
+        </div>
+        <div id="scrolldown" class="column pad-20">
+          <div class="space-bottom">
+            <span id="Name" class="title"></span>
+            <a class="scroll-top icon is-medium is-pulled-right" data-scroll href="#">
+              <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong class="subtitle">Description</strong>
+                  </p>
+                  <p id="Description"></p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong class="subtitle">Syntax</strong>
+                  </p>
+                  <p id="Syntax" class="hack"></p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong class="subtitle">Example</strong>
+                  </p>
+                  <p id="Example" class="hack"></p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong class="subtitle">See also</strong>
+                  </p>
+                  <p id="Seealso" class="hack"></p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="box">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong class="subtitle">Type</strong>
+                  </p>
+                  <p id="Type"></p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <!-- <div class="scroll-top">
+<span class="icon">
+<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+</span>
+</div> -->
+      </div>
+    </div>
+  </body>
+
+  <script src="js/createdocs.js"></script>
+
+</html>

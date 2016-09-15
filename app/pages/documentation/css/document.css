@@ -1,0 +1,179 @@
+/*csslint box-model: false */
+
+body {
+  font-family: ralewayregular;
+}
+
+code {
+  background: transparent;
+  font-family: Hack;
+  font-size: 1rem;
+}
+
+.table a, .box p.hack {
+  font-family: Hack, monospace;
+}
+
+.table td, select, input {
+  font-family: open_sansregular;
+}
+
+.box p.hack {
+  color: #ed6c63;
+  font-size: 1rem;
+}
+
+.box p {
+  font-family: open_sansregular;
+  font-size: 1.1rem;
+}
+
+strong, .title {
+  color: #434348;
+  font-family: ralewaysemibold;
+}
+
+table {
+  table-layout: fixed;
+}
+
+.table thead th {
+  color: darkslategrey;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* SORT HEADER */
+
+.sorting {
+  cursor: pointer;
+}
+
+.sorting:after {
+  content: "\f0dc";
+  font-family: FontAwesome;
+  opacity: 0.3;
+  padding-left: 10px;
+}
+
+.sorting-desc:after {
+  content: "\f0dd";
+  opacity: 1;
+}
+
+.sorting-asc:after {
+  content: "\f0de";
+  opacity: 1;
+}
+
+.datatable-filter-cell {
+  overflow: hidden;
+}
+
+/* Modifications to Bulma Defaults */
+
+html, body {
+  height: 100%;
+}
+
+.columns {
+  height: 100%;
+  margin: 0;
+  padding-top:110px;
+}
+
+.box {
+  margin-bottom: 20px;
+}
+
+.container {
+  background: white;
+  height: 100%;
+  max-width: none;
+}
+
+.column {
+  overflow: auto;
+  padding: 20px;
+}
+
+.pad-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.space-bottom {
+  padding-bottom: 20px;
+}
+
+.navbar {
+  align-items: baseline;
+  background: whitesmoke;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.navbar-left {
+  align-items: baseline;
+}
+
+.navbar-right {
+  margin-right: 10px;
+}
+
+.navbar img {
+  margin-bottom: -3px;
+  margin-right: 10px;
+  vertical-align: bottom;
+}
+
+.scroll-top {
+  visibility: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-button {
+  height:5px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background:#999;
+  border: thin solid #999;
+  border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:#7d7d7d;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    position: relative;
+    text-align: center;
+    width:auto;
+  }
+
+  html, body, .container, .columns {
+    height: auto;
+  }
+
+  .columns {
+    padding-top: 0;
+  }
+  
+  .scroll-top {
+    visibility: visible;
+  }
+}

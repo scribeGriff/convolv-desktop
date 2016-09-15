@@ -1,0 +1,1644 @@
+[
+  {
+    "Category": "Arithmetic",
+    "Description": "Adds two sequences (as arrays) including optional timing information.  Sequences do not have to be the same length.",
+    "Example": "x = [3, 11, 7, 0, -1, 4, 2]; n = -3:3; nm2 = -1:5; w = gauss(length(x)); seqsum = addseqs(x, w, nm2, nm2); samplen outn(seqsum) outy(seqsum)",
+    "Name": "addseqs",
+    "See also": [
+      "add",
+      "subtract",
+      "subseqs",
+      "outy",
+      "outn",
+      "sample",
+      "samplen"
+    ],
+    "Syntax": [
+      "addseqs(x1, x2)",
+      "addseqs(x1, x2, posx1, posx2)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates an area chart with space delimited arguments. Individual points are not displayed except on mouse over.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0.  If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "x = -3:16; y1 = square(x); y2 = cube(x); area x y1 x y2",
+    "Name": "area",
+    "See also": [
+      "bar",
+      "column",
+      "curvepts",
+      "curve",
+      "line",
+      "linepts",
+      "sample",
+      "samplen",
+      "polar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "area [1,12,56,102.4,-1]",
+      "area x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "An optional dark console theme.",
+    "Example": "theme arta",
+    "Name": "arta",
+    "See also": [
+      "chalkboard",
+      "dark",
+      "github",
+      "monokai",
+      "obsidian",
+      "railcasts",
+      "vs",
+      "xcode",
+      "theme"
+    ],
+    "Syntax": [
+      "theme arta"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a bar chart with space delimited arguments. If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0. If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.  If x axis values are provided and are strings, they are used as categories.",
+    "Example": "cat = [\"New York\", \"Los Angeles\", \"Seattle\", \"Boston\", \"Portland\"]; s1 = [47, 25, 102, 16, 33]; s2 = [191, 97, 29, 77, 112]; s3 = [35, 19, 209, 80, 67]; bar cat s1 cat s2 cat s3",
+    "Name": "bar",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "sample",
+      "samplen",
+      "polar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "bar [1,12,56,102.4,-1]",
+      "bar x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "An optional dark console theme.",
+    "Example": "theme chalkboard",
+    "Name": "chalkboard",
+    "See also": [
+      "arta",
+      "dark",
+      "github",
+      "monokai",
+      "obsidian",
+      "railcasts",
+      "vs",
+      "xcode",
+      "theme"
+    ],
+    "Syntax": [
+      "theme chalkboard"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Clears various console and storage parameters using a space deliminated argument.  With no argument, clears the console window.  The argument <code>all</code> clears console and stored variables, the current chart if it exists, and the console window.",
+    "Example": "clear all",
+    "Name": "clear",
+    "See also": [
+      "loadvars",
+      "savevars",
+      "vars"
+    ],
+    "Syntax": [
+      "clear",
+      "clear all",
+      "clear vars",
+      "clear chart",
+      "clear storage"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a column chart with space delimited arguments. If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0. If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.  If x axis values are provided and are strings, they are used as categories.",
+    "Example": "cat = [\"New York\", \"Los Angeles\", \"Seattle\", \"Boston\", \"Portland\"]; s1 = [47, 25, 102, 16, 33]; s2 = [191, 97, 29, 77, 112]; s3 = [35, 19, 209, 80, 67]; column cat s1 cat s2 cat s3",
+    "Name": "column",
+    "See also": [
+      "area",
+      "bar",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "sample",
+      "samplen",
+      "polar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "column [1,12,56,102.4,-1]",
+      "column x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Signal Processing",
+    "Description": "Performs a linear convolution of two sequences using an N point circular convolution algorithm. Accepts optional position information. Returns the complex valued, convolved sequence y, and its numeric position sequence n.",
+    "Example": "x = [3, 11, 7, 0, -1, 4, 2]; xpos = -3:3; h = [2, 3, 0, -5, 2, 1]; hpos = -1:4; result = conv(x, h, xpos, hpos); yreal = re(outy(result)); n = outn(result); samplen n yreal",
+    "Name": "conv",
+    "See also": [
+      "outy",
+      "outn",
+      "re",
+      "im",
+      "deconv",
+      "fsps",
+      "fft",
+      "corr",
+      "sample",
+      "samplen"
+    ],
+    "Syntax": [
+      "conv(x, h)",
+      "conv(x, h, xpos, hpos)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Signal Processing",
+    "Description": "Performs a crosscorrelation of two sequences or, if only one sequence is defined, performs an autocorrelation of that sequence.  Accepts position information. Returns the complex valued correlation sequence y, and its numeric position sequence n.",
+    "Example": "x = [3, 11, 7, 0, -1, 4, 2]; n = -3:3; nm2 = -1:5; w = gauss(length(x)); seqsum = addseqs(x, w, nm2, nm2); xcorr = corr(x, outy(seqsum), n, outn(seqsum)); yreal = re(outy(xcorr)); n = outn(xcorr); samplen n yreal",
+    "Name": "corr",
+    "See also": [
+      "outy",
+      "outn",
+      "re",
+      "im",
+      "conv",
+      "fsps",
+      "fft",
+      "gauss",
+      "sample",
+      "samplen"
+    ],
+    "Syntax": [
+      "corr(x1, x2)",
+      "corr(x)",
+      "corr(x1, x2, x1pos, x2pos)",
+      "corr(x, x, xpos, xpos)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Opens a new tab or window with a showcase of the incredible open source libraries that made Convolv possible.",
+    "Example": "credits",
+    "Name": "credits",
+    "See also": [
+      "help",
+      "docs"
+    ],
+    "Syntax": [
+      "credits"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a curve (spline) chart with space delimited arguments. Individual points are not displayed except on mouse over.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0.  If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "x = -3:16; y1 = square(x); y2 = cube(x); curve x y1 x y2",
+    "Name": "curve",
+    "See also": [
+      "area",
+      "bar",
+      "column",
+      "curvepts",
+      "line",
+      "linepts",
+      "sample",
+      "samplen",
+      "polar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "curve [1,12,56,102.4,-1]",
+      "curve x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a curve (spline) chart with space delimited arguments. Individual data points are displayed in addition to a spline connecting each point.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0. If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "x = -3:16; y1 = square(x); y2 = cube(x); curvepts x y1 x y2",
+    "Name": "curvepts",
+    "See also": [
+      "area",
+      "bar",
+      "column",
+      "curve",
+      "line",
+      "linepts",
+      "sample",
+      "samplen",
+      "polar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "curvepts [1,12,56,102.4,-1]",
+      "curvepts x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "An optional dark console theme.",
+    "Example": "theme dark",
+    "Name": "dark",
+    "See also": [
+      "chalkboard",
+      "arta",
+      "github",
+      "monokai",
+      "obsidian",
+      "railcasts",
+      "vs",
+      "xcode",
+      "theme"
+    ],
+    "Syntax": [
+      "theme dark"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "With no arguments, opens a new window or tab and displays a table of the most recent data imported using the <code>importurl</code> command.  If an importurl data key is known (from the <code>importlog</code> of a previous import), then this key can be provided as the sole argument and the data from that import will be displayed",
+    "Example": "importurl 'http://www.openfisheries.org/api/landings.json' <br> datatable",
+    "Name": "datatable",
+    "See also": [
+      "importurl",
+      "importlog",
+      "importfile",
+      "exportfile"
+    ],
+    "Syntax": [
+      "datatable",
+      "datatable importKeyName"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Signal Processing",
+    "Description": "Performs a deconvolution (polynomial long division) of a numerator and denominator polynomial.  Accepts optional position information.  Returns quotient, q, remainder numerator, r, remainder denominator d, and position information, qn, rn and dn. First coefficient is assumed to be associated with highest order of the polynomial.  The example below performs the following polynomial division: $$qrem = \\frac{z^2 + z + 1 + z^{-1} + z^{-2} +z^{-3}}{z + 2 + z^{-1}}$$",
+    "Example": "num = [1, 1, 1, 1, 1, 1]; nn = -2:3; den = [1, 2, 1]; dn = -1: 1; qrem = deconv(num, den, nn, dn); q = outq(qrem); r = outr(qrem); qn = outqn(qrem); rn = outrn(qrem); d = outd(qrem); dn = outdn(qrem); polystring(q, qn, r, rn, d, dn)",
+    "Name": "deconv",
+    "See also": [
+      "outq",
+      "outr",
+      "outqn",
+      "outrn",
+      "outd",
+      "outdn",
+      "conv",
+      "fsps",
+      "fft",
+      "corr",
+      "polystring"
+    ],
+    "Syntax": [
+      "deconv(num, den)",
+      "deconv(num, den, numpos, denpos)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Opens a new tab or window with a complete set of documentation for Convolv extensions to the Mathjs library as well as all available console and charting commands.",
+    "Example": "docs",
+    "Name": "docs",
+    "See also": [
+      "help"
+    ],
+    "Syntax": [
+      "docs"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Downloads a csv file to the local computer using space delimited arguments.  Each argument corresponds with each row of the csv file with the first argument treated as the file header.",
+    "Example": "cat = [\"New York\", \"Los Angeles\", \"Seattle\", \"Boston\", \"Portland\"]; s1 = [47, 25, 102, 16, 33]; s2 = [191, 97, 29, 77, 112]; s3 = [35, 19, 209, 80, 67]; exportfile cat s1 s2 s3",
+    "Name": "exportfile",
+    "See also": [
+      "importurl",
+      "importlog",
+      "vars",
+      "loadvars",
+      "savevars",
+      "importfile"
+    ],
+    "Syntax": [
+      "exportfile header row1Data row2Data row3Data",
+      "exportfile 0:10 square(0:10) cube(0:10)"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Signal Processing",
+    "Description": "Computes a fourier transform of an array of arbitrary length.  Uses a radix-2 FFT algorithm if the length is a power of 2 and a DFT otherwise. The input is an array of real or complex values. Accepts an optional integer value for the power of the FFT.",
+    "Example": "y = fft([0,1,2,3]);",
+    "Name": "fft",
+    "See also": [
+      "re",
+      "im",
+      "ifft",
+      "fsps",
+      "conv",
+      "corr"
+    ],
+    "Syntax": [
+      "fft(x)",
+      "fft(x, 16)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Signal Processing",
+    "Description": "Implements a 1D transposed direct form II digital filter structure. Supports FIR and IIR filters and inital and final conditions.  Requires b (numerator) coefficients, a (denominator) coefficients and input (for example, step or impulse).  Optionally accepts intial conditions.  Returns the filtered response y, and the final conditions z.",
+    "Example": "x = impulse(141, 20); b = [1]; a = [1, -1, 0.9]; h = filter1d(b, a, x); y = outy(h); z = outz(h); sample y",
+    "Name": "filter1d",
+    "See also": [
+      "impulse",
+      "fft",
+      "ifft",
+      "fsps",
+      "conv",
+      "corr",
+      "outy",
+      "outz",
+      "sample"
+    ],
+    "Syntax": [
+      "filter1d(b, a, x)",
+      "filter1d(b, a, x, z)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Signal Processing",
+    "Description": "Computes the partial sums of the Fourier series of an input waveform. Accepts optional values for number of sums (default is 3), number of cycles that are represented in the waveform (default is 1) and the fraction of the data to treat as a cycle (default is 1).",
+    "Example": "x = squarewave(); y = fsps(x); n = 0:length(x) - 1; curve n re(y) n x",
+    "Name": "fsps",
+    "See also": [
+      "squarewave",
+      "fft",
+      "ifft",
+      "re",
+      "im",
+      "curve",
+      "length"
+    ],
+    "Syntax": [
+      "fsps(x)",
+      "fsps(x, 6, 1, 0.5)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Waveform Generation",
+    "Description": "Generates a random (normal) waveform.  The length of the waveform is optional and by default is set to 512 points.",
+    "Example": "len = 300; gs = gauss(len); sample gs",
+    "Name": "gauss",
+    "See also": [
+      "squarewave",
+      "sinewave",
+      "impulse",
+      "step",
+      "trianglewave",
+      "sawtoothwave"
+    ],
+    "Syntax": [
+      "gauss()",
+      "gauss(len)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Functions that return multiple parameters return them as objects (for example, <code>conv</code>, <code>deconv</code>, <code>corr</code>, <code>filter1d</code>). This function allows you to retrieve a specific parameter from the object if the object was stored in a workspace variable.",
+    "Example": "xdata = [3, 11, 7, 0, -1, 4, 2]; hdata = [2, 3, 0, -5, 2, 1]; yc = conv(xdata, hdata); y = getdata(\"outy\", yc); n = getdata(\"outn\", yc); samplen n re(y)",
+    "Name": "getdata",
+    "See also": [
+      "outy",
+      "outn",
+      "outq",
+      "outqn",
+      "outr",
+      "outrn",
+      "outz",
+      "outd",
+      "outdn",
+      "re",
+      "im"
+    ],
+    "Syntax": [
+      "getdata(\"outy\", \"myVarName\")"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Retrieves a token using a key which has been set by <code>settoken()</code>.  Tokens persist unlike workspace variables.",
+    "Example": "settoken('noaa', 'xxxxxxxxxxxxxxxxxxx'); gettoken('noaa')",
+    "Name": "gettoken",
+    "See also": [
+      "settoken",
+      "importurl",
+      "importlog",
+      "datatable"
+    ],
+    "Syntax": [
+      "gettoken(keyNameVar)",
+      "gettoken('keyName')"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "An optional light console theme.",
+    "Example": "theme github",
+    "Name": "github",
+    "See also": [
+      "chalkboard",
+      "dark",
+      "arta",
+      "monokai",
+      "obsidian",
+      "railcasts",
+      "vs",
+      "xcode",
+      "theme"
+    ],
+    "Syntax": [
+      "theme github"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "With no arguments, displays an abbreviated summary of useful console commands.  If given a space delimited argument, returns the help information for that command or function if it exists in either the Convolv or Mathjs libraries.",
+    "Example": "help abs()",
+    "Name": "help",
+    "See also": [
+      "docs"
+    ],
+    "Syntax": [
+      "help",
+      "help commandOrFunction"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Signal Processing",
+    "Description": "Computes an inverse fourier transform of an array of arbitrary length.  Uses a radix-2 IFFT algorithm if the length is a power of 2 and an IDFT otherwise. The input is an array of real or complex values. Accepts an optional integer value for the power of the IFFT.",
+    "Example": "y = fft([0,1,2,3]); x = ifft(y);",
+    "Name": "ifft",
+    "See also": [
+      "re",
+      "im",
+      "fft",
+      "fsps",
+      "conv",
+      "corr"
+    ],
+    "Syntax": [
+      "ifft(y)",
+      "ifft(y, 16)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Imports a csv file from the local computer to workspace variables.  The csv file is assumed to have the first row as a header.  This command opens an operating system dialog box for selecting the file to import.  If the dialog box does not open, check the browser pop-up settings.",
+    "Example": "importfile <br> importlog <br> vars",
+    "Name": "importfile",
+    "See also": [
+      "importurl",
+      "importlog",
+      "vars",
+      "loadvars",
+      "savevars",
+      "exportfile"
+    ],
+    "Syntax": [
+      "importfile"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Provides information on the most recent import, either from a local file or a url.",
+    "Example": "importfile <br> importlog <br> vars",
+    "Name": "importlog",
+    "See also": [
+      "importurl",
+      "importfile",
+      "vars",
+      "loadvars",
+      "savevars",
+      "exportfile"
+    ],
+    "Syntax": [
+      "importlog"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Imports JSON formatted data from a url.  Accepts a token as an optional argument for retrieving data from urls that require tokens.",
+    "Example": "importurl 'http://www.openfisheries.org/api/landings.json' <br> importlog <br> datatable",
+    "Name": "importurl",
+    "See also": [
+      "importlog",
+      "importfile",
+      "datatable",
+      "vars",
+      "loadvars",
+      "savevars",
+      "exportfile",
+      "gettoken",
+      "settoken"
+    ],
+    "Syntax": [
+      "importurl 'path/to/url'",
+      "importurl 'path/to/url' token"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Waveform Generation",
+    "Description": "Generates an impulse waveform.  All parameters are optional.  By default, data length = 512 and impulse position is length / 4.",
+    "Example": "len = 300; position = 50; imp = impulse(len, position); sample imp",
+    "Name": "impulse",
+    "See also": [
+      "squarewave",
+      "sinewave",
+      "gauss",
+      "step",
+      "trianglewave",
+      "sawtoothwave",
+      "sample"
+    ],
+    "Syntax": [
+      "impulse()",
+      "impulse(len, position)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Returns the length of a one dimensional array.",
+    "Example": "x = squarewave(); len = length(x)",
+    "Name": "length",
+    "See also": [
+      "size"
+    ],
+    "Syntax": [
+      "length(x)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a line chart with space delimited arguments. Individual points are not displayed except on mouse over.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0.  If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "x1 = -3:16; y1 = square(x1); y2 = cube(x1); line x1 y1 x1 y2",
+    "Name": "line",
+    "See also": [
+      "area",
+      "bar",
+      "column",
+      "curvepts",
+      "curve",
+      "linepts",
+      "sample",
+      "samplen",
+      "polar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "line [1,12,56,102.4,-1]",
+      "line x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a line chart with space delimited arguments. Individual data points are displayed in addition to a spline connecting each point.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0. If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "x1 = -3:16; y1 = square(x1); y2 = cube(x1); linepts x1 y1 x1 y2",
+    "Name": "linepts",
+    "See also": [
+      "area",
+      "bar",
+      "column",
+      "curve",
+      "line",
+      "curvepts",
+      "sample",
+      "samplen",
+      "polar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "linepts [1,12,56,102.4,-1]",
+      "linepts x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a line chart with a logarithmic y axis with space delimited arguments. Individual points are not displayed except on mouse over.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0.  If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "y = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]; linlog y",
+    "Name": "linlog",
+    "See also": [
+      "area",
+      "linlogpts",
+      "loglin",
+      "loglinpts",
+      "loglog",
+      "loglogpts",
+      "line",
+      "linepts",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "linlog y",
+      "linlog x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a line chart with a logarithmic y axis with space delimited arguments. Individual data points are displayed in addition to a spline connecting each point.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0. If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "y = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]; linlogpts y",
+    "Name": "linlogpts",
+    "See also": [
+      "area",
+      "linlog",
+      "loglin",
+      "loglinpts",
+      "loglog",
+      "loglogpts",
+      "line",
+      "linepts",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "linlogpts y",
+      "linlogpts x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Loads the terminal variables that have been saved to local storage using the <code>savevars</code> command.  To permanently remove stored variables, use the console command <code>clear storage</code>.",
+    "Example": "loadvars",
+    "Name": "loadvars",
+    "See also": [
+      "importlog",
+      "importfile",
+      "importurl",
+      "vars",
+      "savevars",
+      "exportfile",
+      "gettoken",
+      "settoken"
+    ],
+    "Syntax": [
+      "loadvars"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a line chart with a logarithmic x axis with space delimited arguments. Individual points are not displayed except on mouse over.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a logarithmic x axis starting from point 1.  If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "x = 1:10; xp = dotPow(10,x); y = square(x); loglin xp y",
+    "Name": "loglin",
+    "See also": [
+      "area",
+      "linlogpts",
+      "linlog",
+      "loglinpts",
+      "loglog",
+      "loglogpts",
+      "line",
+      "linepts",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "loglin y",
+      "loglin x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a line chart with a logarithmic x axis with space delimited arguments. Individual data points are displayed in addition to a spline connecting each point.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a logarithmic x axis starting from point 1. If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "x = 1:10; xp = dotPow(10,x); y = square(x); loglinpts xp y",
+    "Name": "loglinpts",
+    "See also": [
+      "area",
+      "linlog",
+      "loglin",
+      "linlogpts",
+      "loglog",
+      "loglogpts",
+      "line",
+      "linepts",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "loglinpts y",
+      "loglinpts x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a line chart with logarithmic x and y axes with space delimited arguments. Individual points are not displayed except on mouse over.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a logarithmic x axis starting from point 1.  If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "x = 1:10; xp = dotPow(10,x); y = square(x); loglog xp y",
+    "Name": "loglog",
+    "See also": [
+      "area",
+      "linlogpts",
+      "linlog",
+      "loglinpts",
+      "loglin",
+      "loglogpts",
+      "line",
+      "linepts",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "loglog y",
+      "loglog x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a line chart with logarithmic x and y axes with space delimited arguments. Individual data points are displayed in addition to a spline connecting each point.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a logarithmic x axis starting from point 1. If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
+    "Example": "x = 1:10; xp = dotPow(10,x); y = square(x); loglogpts xp y",
+    "Name": "loglogpts",
+    "See also": [
+      "area",
+      "linlog",
+      "loglin",
+      "linlogpts",
+      "loglog",
+      "loglinpts",
+      "line",
+      "linepts",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "loglogpts y",
+      "loglogpts x1 y1 ... xn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "The default dark console theme.",
+    "Example": "theme monokai",
+    "Name": "monokai",
+    "See also": [
+      "chalkboard",
+      "dark",
+      "github",
+      "arta",
+      "obsidian",
+      "railcasts",
+      "vs",
+      "xcode",
+      "theme"
+    ],
+    "Syntax": [
+      "theme monokai"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "An optional dark console theme.",
+    "Example": "theme obsidian",
+    "Name": "obsidian",
+    "See also": [
+      "chalkboard",
+      "dark",
+      "github",
+      "monokai",
+      "arta",
+      "railcasts",
+      "vs",
+      "xcode",
+      "theme"
+    ],
+    "Syntax": [
+      "theme obsidian"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "For functions that return multiple values, this function retrieves the value whose key is outd. It is a shortcut for <code>getdata(\"outd\", myVar);</code>",
+    "Example": "num = [1, 1, 1, 1, 1, 1]; nn = -2:3; den = [1, 2, 1]; dn = -1: 1; qrem = deconv(num, den, nn, dn); q = outq(qrem); r = outr(qrem); qn = outqn(qrem); rn = outrn(qrem); d = outd(qrem); dn = outdn(qrem); polystring(q, qn, r, rn, d, dn)",
+    "Name": "outd",
+    "See also": [
+      "outy",
+      "getdata",
+      "outq",
+      "outqn",
+      "outn",
+      "outr",
+      "outdn",
+      "outrn",
+      "outz",
+      "polystring"
+    ],
+    "Syntax": [
+      "outd(myVar)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "For functions that return multiple values, this function retrieves the value whose key is outdn. It is a shortcut for <code>getdata(\"outdn\", myVar);</code>",
+    "Example": "num = [1, 1, 1, 1, 1, 1]; nn = -2:3; den = [1, 2, 1]; dn = -1: 1; qrem = deconv(num, den, nn, dn); q = outq(qrem); r = outr(qrem); qn = outqn(qrem); rn = outrn(qrem); d = outd(qrem); dn = outdn(qrem); polystring(q, qn, r, rn, d, dn)",
+    "Name": "outdn",
+    "See also": [
+      "outy",
+      "getdata",
+      "outq",
+      "outqn",
+      "outn",
+      "outr",
+      "outd",
+      "outrn",
+      "outz",
+      "polystring"
+    ],
+    "Syntax": [
+      "outdn(myVar)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "For functions that return multiple values, this function retrieves the value whose key is outn. It is a shortcut for <code>getdata(\"outn\", myVar);</code>",
+    "Example": "xdata = [3, 11, 7, 0, -1, 4, 2]; hdata = [2, 3, 0, -5, 2, 1]; yc = conv(xdata, hdata); y = outy(yc); n = outn(yc); samplen n re(y)",
+    "Name": "outn",
+    "See also": [
+      "outy",
+      "getdata",
+      "outq",
+      "outqn",
+      "outr",
+      "outrn",
+      "outd",
+      "outdn",
+      "outz",
+      "conv",
+      "samplen"
+    ],
+    "Syntax": [
+      "outn(myVar)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "For functions that return multiple values, this function retrieves the value whose key is outq. It is a shortcut for <code>getdata(\"outq\", myVar);</code>",
+    "Example": "num = [1, 1, 1, 1, 1, 1]; nn = -2:3; den = [1, 2, 1]; dn = -1: 1; qrem = deconv(num, den, nn, dn); q = outq(qrem); r = outr(qrem); qn = outqn(qrem); rn = outrn(qrem); d = outd(qrem); dn = outdn(qrem); polystring(q, qn, r, rn, d, dn)",
+    "Name": "outq",
+    "See also": [
+      "outy",
+      "getdata",
+      "outr",
+      "outqn",
+      "outn",
+      "outrn",
+      "outd",
+      "outdn",
+      "outz",
+      "deconv",
+      "polystring"
+    ],
+    "Syntax": [
+      "outq(myVar)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "For functions that return multiple values, this function retrieves the value whose key is outqn. It is a shortcut for <code>getdata(\"outqn\", myVar);</code>",
+    "Example": "num = [1, 1, 1, 1, 1, 1]; nn = -2:3; den = [1, 2, 1]; dn = -1: 1; qrem = deconv(num, den, nn, dn); q = outq(qrem); r = outr(qrem); qn = outqn(qrem); rn = outrn(qrem); d = outd(qrem); dn = outdn(qrem); polystring(q, qn, r, rn, d, dn)",
+    "Name": "outqn",
+    "See also": [
+      "outy",
+      "getdata",
+      "outq",
+      "outrn",
+      "outn",
+      "outd",
+      "outdn",
+      "outr",
+      "outz",
+      "deconv",
+      "polystring"
+    ],
+    "Syntax": [
+      "outqn(myVar)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "For functions that return multiple values, this function retrieves the value whose key is outr. It is a shortcut for <code>getdata(\"outr\", myVar);</code>",
+    "Example": "num = [1, 1, 1, 1, 1, 1]; nn = -2:3; den = [1, 2, 1]; dn = -1: 1; qrem = deconv(num, den, nn, dn); q = outq(qrem); r = outr(qrem); qn = outqn(qrem); rn = outrn(qrem); d = outd(qrem); dn = outdn(qrem); polystring(q, qn, r, rn, d, dn)",
+    "Name": "outr",
+    "See also": [
+      "outy",
+      "getdata",
+      "outq",
+      "outqn",
+      "outn",
+      "outd",
+      "outdn",
+      "outrn",
+      "outz",
+      "polystring"
+    ],
+    "Syntax": [
+      "outr(myVar)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "For functions that return multiple values, this function retrieves the value whose key is outrn. It is a shortcut for <code>getdata(\"outrn\", myVar);</code>",
+    "Example": "num = [1, 1, 1, 1, 1, 1]; nn = -2:3; den = [1, 2, 1]; dn = -1: 1; qrem = deconv(num, den, nn, dn); q = outq(qrem); r = outr(qrem); qn = outqn(qrem); rn = outrn(qrem); d = outd(qrem); dn = outdn(qrem); polystring(q, qn, r, rn, d, dn)",
+    "Name": "outrn",
+    "See also": [
+      "outy",
+      "getdata",
+      "outq",
+      "outqn",
+      "outn",
+      "outr",
+      "outd",
+      "outdn",
+      "outz",
+      "polystring"
+    ],
+    "Syntax": [
+      "outrn(myVar)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "For functions that return multiple values, this function retrieves the value whose key is outy. It is a shortcut for <code>getdata(\"outy\", myVar);</code>",
+    "Example": "xdata = [3, 11, 7, 0, -1, 4, 2]; hdata = [2, 3, 0, -5, 2, 1]; yc = conv(xdata, hdata); y = outy(yc); sample re(y)",
+    "Name": "outy",
+    "See also": [
+      "outn",
+      "getdata",
+      "outq",
+      "outqn",
+      "outr",
+      "outrn",
+      "outd",
+      "outdn",
+      "outz",
+      "sample"
+    ],
+    "Syntax": [
+      "outy(myVar)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "For functions that return multiple values, this function retrieves the value whose key is outz. It is a shortcut for <code>getdata(\"outz\", myVar);</code>",
+    "Example": "x = impulse(141, 20); b = [1]; a = [1, -1, 0.9]; h = filter1d(b, a, x); y = outy(h); z = outz(h);",
+    "Name": "outz",
+    "See also": [
+      "outy",
+      "getdata",
+      "outq",
+      "outqn",
+      "outr",
+      "outrn",
+      "outd",
+      "outdn",
+      "outn",
+      "filter1d"
+    ],
+    "Syntax": [
+      "outz(myVar)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a pie chart with space delimited arguments.  The pie chart requires data to be submitted as either a single array of numeric values or an array of identifiers (strings or numeric) followed by an array of numeric values.",
+    "Example": "months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; data = [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]; pie months data",
+    "Name": "pie",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "sample",
+      "samplen",
+      "bar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series",
+      "polar"
+    ],
+    "Syntax": [
+      "pie data",
+      "pie name data"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "With no arguments, displays number of significant digits in formatted answer written to console.  If given a space delimited argument, sets the  precision of the displayed answer to a number between 0 and 16 significant digits.",
+    "Example": "precision 12",
+    "Name": "precision",
+    "See also": [
+      "theme",
+      "clear",
+      "help"
+    ],
+    "Syntax": [
+      "precision",
+      "precision 9"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Creates a polar chart with space delimited arguments.  Accepts only the radian data as the angular steps are computed internally based on the length of the first argument.",
+    "Example": "x = 0:0.01:2*pi; polar sin(x) cos(x)",
+    "Name": "polar",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "sample",
+      "samplen",
+      "bar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "polar rho",
+      "polar rho1 ... rhon"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Converts an argument list of arrays to a latex string and displays the results.  The function handles three different scenarios, depending on the number of pairs of arrays in the argument list.  If provided 2 arrays, the output is a polynomial with the coefficients corresponding to the first argument and the exponents corresponding the the second argument.  Passing 4 arrays will utilize the first pair of arrays as the numerator and the second pair as the denominator.  Finally, 6 arrays in the argument list will create a latex string with a quotient and remainder, as in the example below.",
+    "Example": "num = [1, 1, 1, 1, 1, 1]; nn = -2:3; den = [1, 2, 1]; dn = -1: 1; qrem = deconv(num, den, nn, dn); q = outq(qrem); r = outr(qrem); qn = outqn(qrem); rn = outrn(qrem); d = outd(qrem); dn = outdn(qrem); polystring(q, qn, r, rn, d, dn)",
+    "Name": "polystring",
+    "See also": [
+      "outy",
+      "getdata",
+      "outq",
+      "outqn",
+      "outn",
+      "outr",
+      "outd",
+      "outdn",
+      "outz"
+    ],
+    "Syntax": [
+      "polystring(coefficientsArray, exponentialArray)",
+      "polystring([1, 2, 4, 5], [-2, 1, 0, 3])"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "An optional dark console theme.",
+    "Example": "theme railcasts",
+    "Name": "railcasts",
+    "See also": [
+      "chalkboard",
+      "dark",
+      "github",
+      "monokai",
+      "obsidian",
+      "arta",
+      "vs",
+      "xcode",
+      "theme"
+    ],
+    "Syntax": [
+      "theme railcasts"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Displays sample data at discrete sample points with a stem plot.  Arguments are space delimited.  The x axis is automatically generated as uniform steps from 0 to length of data.  Accepts a single array of sample values or multiple arrays. Does not accept timing information (see <code>samplen</code>).",
+    "Example": "sample gauss() gauss()",
+    "Name": "sample",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "polar",
+      "samplen",
+      "bar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "sample y",
+      "sample y1 ... yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Displays sample data at discrete sample points with a stem plot.  Arguments are space delimited.  Accepts timing information. Accepts a single array of sample values or multiple arrays of data and timing.",
+    "Example": "samplen -3:4  [3,6,-9,2.4,0,0,1,-4,-1,0,12]",
+    "Name": "samplen",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "polar",
+      "sample",
+      "bar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "series"
+    ],
+    "Syntax": [
+      "samplen y",
+      "samplen n1 y1 ... nn yn"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Saves the terminal variables to local storage.  To permanently remove stored variables, use the console command <code>clear storage</code>.",
+    "Example": "savevars",
+    "Name": "savevars",
+    "See also": [
+      "vars",
+      "loadvars",
+      "importfile",
+      "importurl",
+      "importlog",
+      "datatable",
+      "exportfile"
+    ],
+    "Syntax": [
+      "savevars"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Waveform Generation",
+    "Description": "Generates a sawtooth waveform.  All parameters are optional.  By default, amplitude = 1, cycles = 1, and data length = 512.",
+    "Example": "amp = 12; cycles = 4; len = 300; saw = sawtoothwave(amp, cycles, len); curve saw",
+    "Name": "sawtoothwave",
+    "See also": [
+      "squarewave",
+      "sinewave",
+      "impulse",
+      "step",
+      "trianglewave",
+      "gauss"
+    ],
+    "Syntax": [
+      "sawtoothwave()",
+      "sawtoothwave(amp, cycles, length)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Changes the default series title (or titles) that appears in the legend.  Accepts space delimited strings for each series whose name should be changed in the order they appear in the legend. String names can be single or double quoted but apostrophes must be escaped with a backslash.",
+    "Example": "sample gauss() gauss() <br> series 'random series 1' 'random series 2'",
+    "Name": "series",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "polar",
+      "sample",
+      "bar",
+      "title",
+      "subtitle",
+      "xaxis",
+      "yaxis",
+      "samplen"
+    ],
+    "Syntax": [
+      "series 'Series name 1' 'Series name 2'"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Sets and stores in local storage a token using a key.  Returns the key's value.",
+    "Example": "myToken = settoken('noaa', 'xxxxxxxxxxxxxxxxxxx');",
+    "Name": "settoken",
+    "See also": [
+      "gettoken",
+      "importurl",
+      "importlog",
+      "datatable"
+    ],
+    "Syntax": [
+      "settoken(keyNameVar, tokenNameVar)",
+      "settoken('keyName', 'tokenName')"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Waveform Generation",
+    "Description": "Generates a sinewave waveform.  All parameters are optional.  By default, amplitude = 1, cycles = 1, and data length = 512.",
+    "Example": "amp = 12; cycles = 4; len = 300; sw = sinewave(amp, cycles, len); curve sw",
+    "Name": "sinewave",
+    "See also": [
+      "squarewave",
+      "sawtoothwave",
+      "impulse",
+      "step",
+      "trianglewave",
+      "gauss"
+    ],
+    "Syntax": [
+      "sinewave()",
+      "sinewave(amp, cycles, len)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Waveform Generation",
+    "Description": "Generates a squarewave waveform.  All parameters are optional.  By default, amplitude = 1, cycles = 1, data length = 512 and scale = 20 (scale can change edge rate where scale = 1 is a sinewave).",
+    "Example": "amp = 12; cycles = 4; len = 300; scale = 40; sqw = squarewave(amp, cycles, len, scale); curve sqw",
+    "Name": "squarewave",
+    "See also": [
+      "sinewave",
+      "sawtoothwave",
+      "impulse",
+      "step",
+      "trianglewave",
+      "gauss"
+    ],
+    "Syntax": [
+      "squarewave()",
+      "squarewave(amp, cycles, len, scale)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Waveform Generation",
+    "Description": "Generates a step waveform.  All parameters are optional.  By default, data length = 512 and step position is length / 4.",
+    "Example": "len = 300; position = 50; st = step(len, position); curve st",
+    "Name": "step",
+    "See also": [
+      "sinewave",
+      "sawtoothwave",
+      "impulse",
+      "squarewave",
+      "trianglewave",
+      "gauss"
+    ],
+    "Syntax": [
+      "step()",
+      "step(len, position)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Arithmetic",
+    "Description": "Subtracts two sequences (as arrays) including optional timing information.  Sequences do not have to be the same length.",
+    "Example": "x = [3, 11, 7, 0, -1, 4, 2]; n = -3:3; nm2 = -1:5; w = gauss(length(x)); seqdiff = subseqs(x, w, nm2, nm2); samplen outn(seqdiff) outy(seqdiff)",
+    "Name": "subseqs",
+    "See also": [
+      "add",
+      "addseqs",
+      "subtract",
+      "outy",
+      "outn"
+    ],
+    "Syntax": [
+      "subseqs(x1, x2)",
+      "subseqs(x1, x2, posx1, posx2)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Adds a subtitle to the current chart.  Arguments are space delimited.  The subtitle string is required and a color string for styling the subtitle is optional.  String name can be single or double quoted but apostrophes must be escaped with a backslash.",
+    "Example": "x = 1:10; y = square(x); samplen x y <br> title 'The square of x' '#90ed7d' <br> subtitle 'for x from 1 to 10'",
+    "Name": "subtitle",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "polar",
+      "sample",
+      "bar",
+      "title",
+      "series",
+      "xaxis",
+      "yaxis",
+      "samplen"
+    ],
+    "Syntax": [
+      "subtitle 'This is the subtitle'",
+      "subtitle 'This is the subtitle' 'red'"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "With no arguments, displays the current theme of the console.  If given a space delimited argument, sets the theme to the argument value.",
+    "Example": "theme obsidian",
+    "Name": "theme",
+    "See also": [
+      "arta",
+      "chalkboard",
+      "dark",
+      "github",
+      "monokai",
+      "obsidian",
+      "railcasts",
+      "xcode",
+      "vs"
+    ],
+    "Syntax": [
+      "theme",
+      "theme xcode"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Adds a title to the current chart.  Arguments are space delimited.  The title string is required and a color string for styling the title is optional.  String name can be single or double quoted but apostrophes must be escaped with a backslash.",
+    "Example": "x = 1:10; y = square(x); samplen x y <br> title 'The square of x' '#90ed7d'",
+    "Name": "title",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "polar",
+      "sample",
+      "bar",
+      "subtitle",
+      "series",
+      "xaxis",
+      "yaxis",
+      "samplen"
+    ],
+    "Syntax": [
+      "title 'This is the title'",
+      "title 'This is the title' 'red'"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Waveform Generation",
+    "Description": "Generates a trianglewave waveform.  All parameters are optional.  By default, amplitude = 1, cycles = 1, and data length = 512.",
+    "Example": "amp = 12; cycles = 4; len = 300; tw = trianglewave(amp, cycles, len); curve tw",
+    "Name": "trianglewave",
+    "See also": [
+      "sinewave",
+      "sawtoothwave",
+      "impulse",
+      "squarewave",
+      "step",
+      "gauss"
+    ],
+    "Syntax": [
+      "trianglewave()",
+      "trianglewave(amp, cycles, len)"
+    ],
+    "Type": "function"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "Displays the terminal variables that have been defined and saved to the scope using the equal sign.  Provides information on the variable's type and its size.",
+    "Example": "vars",
+    "Name": "vars",
+    "See also": [
+      "savevars",
+      "loadvars",
+      "importfile",
+      "importurl",
+      "importlog",
+      "datatable",
+      "exportfile"
+    ],
+    "Syntax": [
+      "vars"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "An optional light console theme.",
+    "Example": "theme vs",
+    "Name": "vs",
+    "See also": [
+      "chalkboard",
+      "dark",
+      "github",
+      "monokai",
+      "obsidian",
+      "railcasts",
+      "arta",
+      "xcode",
+      "theme"
+    ],
+    "Syntax": [
+      "theme vs"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Adds a label to the x axis of the current chart.  The label argument is space delimited.  String name can be single or double quoted but apostrophes must be escaped with a backslash.",
+    "Example": "x = 1:10; y = square(x); samplen x y <br> xaxis 'samples (n)'",
+    "Name": "xaxis",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "polar",
+      "sample",
+      "bar",
+      "subtitle",
+      "series",
+      "title",
+      "yaxis",
+      "samplen"
+    ],
+    "Syntax": [
+      "xaxis 'This is the x axis'"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Utilities",
+    "Description": "An optional light console theme.",
+    "Example": "theme xcode",
+    "Name": "xcode",
+    "See also": [
+      "chalkboard",
+      "dark",
+      "github",
+      "monokai",
+      "obsidian",
+      "railcasts",
+      "vs",
+      "arta",
+      "theme"
+    ],
+    "Syntax": [
+      "theme xcode"
+    ],
+    "Type": "command"
+  },
+  {
+    "Category": "Chart",
+    "Description": "Adds a label to the y axis of the current chart.  The label argument is space delimited.  String name can be single or double quoted but apostrophes must be escaped with a backslash.",
+    "Example": "x = 1:10; y = square(x); samplen x y <br> yaxis 'square (n)'",
+    "Name": "yaxis",
+    "See also": [
+      "area",
+      "column",
+      "curve",
+      "curvepts",
+      "line",
+      "linepts",
+      "polar",
+      "sample",
+      "bar",
+      "subtitle",
+      "series",
+      "title",
+      "xaxis",
+      "samplen"
+    ],
+    "Syntax": [
+      "yaxis 'This is the y axis'"
+    ],
+    "Type": "command"
+  }
+]

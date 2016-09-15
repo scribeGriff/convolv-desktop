@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Convolv Desktop</title>
+
+    <link rel="stylesheet" href="katex-0.6.0/katex.min.css">
+    <link rel="stylesheet" href="css/ink-flex.min.css">
+    <!--<link rel="stylesheet" href="css/demo.css">-->
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/component-nlform-fixed.css">
+    <link rel="stylesheet" href="css/awesomplete.css">
+    <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/split.css">
+    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/SourceSansPro/SourceSansPro.css">
+    <link rel="stylesheet" href="fonts/OpenSans/OpenSans.css">
+    <link rel="stylesheet" href="fonts/Raleway/Raleway.css">
+    <link rel="stylesheet" href="fonts/Hack/css/hack-extended.css">
+    
+    <!-- this may not be needed anymore -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.0/es6-shim.min.js"></script>
+    
+    <!-- this may not work for this project - may need to switch to babyparse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
+    
+    <script src="katex-0.6.0/katex.min.js"></script>
+
+    <script src="js/Blob.js"></script>
+    <script src="js/FileSaver.min.js"></script>
+    <script src="js/awesomplete.js"></script>
+    <script src="js/arithmetic.js"></script>
+    <script src="js/fourier.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/convolution.js"></script>
+    <script src="js/wavegen.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/polystring.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/modernizr-custom.js"></script>
+    <script src="js/nlform.js"></script>
+
+    <script src="helpers/context_menu.js"></script>
+    <script src="helpers/external_links.js"></script>
+
+  </head>
+
+  <body>
+    <!-- navigation -->
+    <nav class="pages-nav">
+      <div class="pages-nav__item"><a class="link link--page" href="#page-console1">Console 1</a></div>
+      <div class="pages-nav__item"><a class="link link--page" href="#page-console2">Console 2</a></div>
+      <div class="pages-nav__item"><a class="link link--page" href="#page-console3">Console 3</a></div>
+      <div class="pages-nav__item"><a class="link link--page" href="#page-console4">Console 4</a></div>
+      <div class="pages-nav__item"><a class="link link--page" href="#page-dashboard">Dashboard</a></div>
+      <div class="pages-nav__item"><a class="link link--page" href="#page-settings">Settings</a></div>
+    </nav>
+    <!-- /navigation-->
+    <!-- pages stack -->
+    <div class="pages-stack">
+      <!-- page -->
+      <div class="page" id="page-console1">
+        <div class="ink-grid">
+          <div class="column-group terminal-background" id="background-terminal1">
+            <div class="all-auto terminal-container" id="terminal1"></div>
+            <div class="all-auto chart-container" id="chart-terminal1">
+              <div class="push-center push-middle datagraph" id="chart-div1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /page -->
+      <div class="page" id="page-console2">
+        <div class="ink-grid">
+          <div class="column-group terminal-background" id="background-terminal2">
+            <div class="all-auto terminal-container" id="terminal2"></div>
+            <div class="all-auto chart-container" id="chart-terminal2">
+              <div class="push-center push-middle datagraph" id="chart-div2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page" id="page-console3">
+        <div class="ink-grid">
+          <div class="column-group terminal-background" id="background-terminal3">
+            <div class="all-auto terminal-container" id="terminal3"></div>
+            <div class="all-auto chart-container" id="chart-terminal3">
+              <div class="push-center push-middle datagraph" id="chart-div3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page" id="page-console4">
+        <div class="ink-grid">
+          <div class="column-group terminal-background" id="background-terminal4">
+            <div class="all-auto terminal-container" id="terminal4"></div>
+            <div class="all-auto chart-container" id="chart-terminal4">
+              <div class="push-center push-middle datagraph" id="chart-div4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page" id="page-dashboard">
+        <div id="a" class="split split-horizontal">
+          <div id="c" class="split split-content"></div>
+          <div id="d" class="split split-content"></div>
+        </div>
+        <div id="b" class="split split-horizontal">
+          <div id="e" class="split split-content"></div>
+          <div id="f" class="split split-content"></div>
+        </div>
+      </div>
+      <div class="page" id="page-settings">
+        <div class="nl-container">
+          <div class="nl-main clearfix">
+            <header>
+              <h1>General Settings</h1>	
+            </header>
+            <form id="nl-form" class="nl-form">
+              Set console theme to   
+              <select>
+                <option value="1" selected>monokai</option>
+                <option value="2">github</option>
+                <option value="3">xcode</option>
+                <option value="4">obsidian</option>
+                <option value="5">vs</option>
+                <option value="6">arta</option>
+                <option value="7">railcasts</option>
+                <option value="8">chalkboard</option>
+                <option value="8">dark</option>
+              </select>.<br>
+              Set the displayed precision to 
+              <select>
+                <option value="1" selected>8</option>
+                <option value="2">9</option>
+                <option value="3">10</option>
+                <option value="4">11</option>
+                <option value="5">12</option>
+              </select> significant digits.<br>
+              Code hinting is  
+              <select>
+                <option value="1" selected>enabled</option>
+                <option value="2">disabled</option>
+              </select>.<br>
+              in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
+              <div class="nl-submit-wrap">
+                <button class="nl-submit" type="submit">save settings</button>
+              </div>
+              <div class="nl-overlay"></div>
+            </form></div></div>
+      </div>
+      <!--<input type="file" id="fileElem" name="files[]" style="display:none">-->
+    </div>
+    <!-- /pages-stack -->
+    <button class="menu-button"><span>Menu</span></button>
+
+    <script src="js/split.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "convolv-desktop",
+  "productName": "Convolv DT",
+  "description": "A quad console desktop app for working with data",
+  "version": "0.1.0",
+  "author": "Richard Griffith <sjefen@convo.lv>",
+  "copyright": "© 2016, Convolv",
+  "homepage": "https://convo.lv",
+  "license": "MIT",
+  "private": true,
+  "main": "background.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scribeGriff/math-terminal"
+  },
+  "dependencies": {
+    "fs-jetpack": "^0.9.0",
+    "highcharts": "^4.2.5",
+    "mathjs": "^3.4.1",
+    "moment": "^2.15.0"
+  }
+}

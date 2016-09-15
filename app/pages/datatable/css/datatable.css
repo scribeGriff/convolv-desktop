@@ -1,0 +1,94 @@
+/* PAGING */
+
+html {
+  height: 100%;
+}
+
+body {
+  background: white;
+  font-family: Hack, monospace;
+  height: 100%;
+}
+
+.title, .subtitle, th {
+  font-family: 'ralewayregular';
+}
+
+.table thead th {
+  color: darkslategrey;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+}
+
+.pagination a {
+  color: firebrick;
+}
+
+.pagination .active a {
+  border: 0;
+	color: gray;
+	cursor: default;
+}
+
+/* SORT HEADER */
+
+.sorting {
+  cursor: pointer;
+}
+
+.sorting:after {
+  content: "\f0dc";
+  font-family: FontAwesome;
+  opacity: 0.3;
+  padding-left: 10px;
+}
+
+.sorting-desc:after {
+  content: "\f0dd";
+  opacity: 1;
+}
+
+.sorting-asc:after {
+  content: "\f0de";
+  opacity: 1;
+}
+
+/* Modifications to Bulma Defaults */
+
+.tabs a:hover {
+  border-bottom-color: darkred;
+  border-bottom-width: 2px;
+}
+
+.table tbody tr:hover {
+  background: #b4cbef;
+}
+
+a:hover {
+  color: black
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-button {
+  height:5px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background:#999;
+  border: thin solid #999;
+  border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:#7d7d7d;
+}

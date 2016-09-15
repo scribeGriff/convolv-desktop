@@ -1,0 +1,61 @@
+[hidden] { display: none; }
+
+.visually-hidden {
+  clip: rect(0, 0, 0, 0);
+  left: 30px;
+  position: absolute;
+}
+
+div.awesomplete > ul {
+  background: #3E4438;
+  border: 1px solid black;
+  border: 1px solid rgba(0,0,0,.3);
+  border-radius: .3em;
+  box-shadow: .05em .2em .6em rgba(0,0,0,.2);
+  left: 30px;
+  list-style: none;
+  margin: .2em 0 0;
+  padding: 0;
+  position: absolute;
+  text-shadow: none;
+  width: auto;
+  z-index: 1;
+}
+
+.bottom50 {
+  bottom: 50px;
+}
+
+div.awesomplete > ul[hidden],
+div.awesomplete > ul:empty {
+  display: none;
+}
+
+div.awesomplete > ul {
+  transform-origin: 1.43em -.43em;
+  transition: .3s cubic-bezier(.4,.2,.5,1.4);
+}
+
+div.awesomplete > ul[hidden],
+div.awesomplete > ul:empty {
+  display: block;
+  opacity: 0;
+  transform: scale(0);
+  transition-timing-function: ease;
+}
+
+div.awesomplete > ul > li {
+  cursor: pointer;
+  padding: .2em .5em;
+  position: relative;
+}
+
+div.awesomplete > ul > li[aria-selected="true"] {
+  background: #272822;
+  color: white;
+}
+
+div.awesomplete mark {
+  background: #e6db74;
+  background: rgba(230, 219, 116, 0.3);
+}
