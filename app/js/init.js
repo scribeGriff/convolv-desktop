@@ -29,9 +29,8 @@ var awesomplete = true;
   var colors = ["#261C21", "#B0254F", "#DE4126", "#EB9605", "#3E6B48", "#CE1836", "#F85931", "#009989"],
       hccolors = ['#7cb5ec', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1', '#434348', "#3E6B48", "#009989"];
 
-  var terminal1, terminal2, terminal3, terminal4, bgcolor, lineShape, points, cmdinput, autocompleter, helpExt, parseData, isValidColor, welcome1,
-      awesompleteDivUl, allCommands, parseDataPolar, parseDataSample, parseDataSamplen, createBaseChart, createPolarChart, createSampleChart, consoleCommands,
-      nlform;
+  var terminal1, terminal2, terminal3, terminal4, bgcolor, lineShape, points, cmdinput1, cmdinput2, cmdinput3, cmdinput4, autocompleter1, autocompleter2,
+      autocompleter3, autocompleter4, helpExt, parseData, isValidColor, welcome1, awesompleteDivUl1, awesompleteDivUl2, awesompleteDivUl3, awesompleteDivUl4, allCommands, parseDataPolar, parseDataSample, parseDataSamplen, createBaseChart, createPolarChart, createSampleChart, consoleCommands, nlform;
 
   var chartDiv1 = document.getElementById('chart-div1'),
       chartDiv2 = document.getElementById('chart-div2'),
@@ -185,15 +184,18 @@ var awesomplete = true;
 
   if (localStorage.getItem("visitor") === null) {
     localStorage.setItem("visitor", new Date());
-    welcome1 = "Welcome to The Data Dashboard at Convolv.<br>To get started, type help at the prompt.";
+    welcome1 = "Welcome to the Convolv Desktop.<br>To get started, type help at the prompt.";
   } else {
     welcome1 = "Console 1";
   }
 
   window.onload = function() {
     if (awesomplete) {
-      cmdinput = document.getElementById("autocomp-terminal1");
-      autocompleter = new Awesomplete(cmdinput, {
+      cmdinput1 = document.getElementById("autocomp-terminal1");
+      cmdinput2 = document.getElementById("autocomp-terminal2");
+      cmdinput3 = document.getElementById("autocomp-terminal3");
+      cmdinput4 = document.getElementById("autocomp-terminal4");
+      autocompleter1 = new Awesomplete(cmdinput1, {
         autoFirst: true, 
         filter: function(text, input) {
           var matchInput = input.match(/\b\w{2,}\b$/);
@@ -206,14 +208,59 @@ var awesomplete = true;
           this.input.value = before + text;
         }	
       });
-      autocompleter.list = allCommands;
-      // Awesomplete was clobbering the autofocus attribute in FF so fix was to focus in JS.
-      //cmdinput.focus();
+      autocompleter2 = new Awesomplete(cmdinput2, {
+        autoFirst: true, 
+        filter: function(text, input) {
+          var matchInput = input.match(/\b\w{2,}\b$/);
+          if (matchInput !== null) {
+            return Awesomplete.FILTER_CONTAINS(text, matchInput[0]);
+          }
+        },
+        replace: function(text) {
+          var before = this.input.value.match(/^.+ \s*|/)[0];
+          this.input.value = before + text;
+        }	
+      });
+      autocompleter3 = new Awesomplete(cmdinput3, {
+        autoFirst: true, 
+        filter: function(text, input) {
+          var matchInput = input.match(/\b\w{2,}\b$/);
+          if (matchInput !== null) {
+            return Awesomplete.FILTER_CONTAINS(text, matchInput[0]);
+          }
+        },
+        replace: function(text) {
+          var before = this.input.value.match(/^.+ \s*|/)[0];
+          this.input.value = before + text;
+        }	
+      });
+      autocompleter4 = new Awesomplete(cmdinput4, {
+        autoFirst: true, 
+        filter: function(text, input) {
+          var matchInput = input.match(/\b\w{2,}\b$/);
+          if (matchInput !== null) {
+            return Awesomplete.FILTER_CONTAINS(text, matchInput[0]);
+          }
+        },
+        replace: function(text) {
+          var before = this.input.value.match(/^.+ \s*|/)[0];
+          this.input.value = before + text;
+        }	
+      });
+      autocompleter1.list = allCommands;
+      autocompleter2.list = allCommands;
+      autocompleter3.list = allCommands;
+      autocompleter4.list = allCommands;
 
       // For terminal to detect if command completion should be above or below input
-      // TODO: This needs to be modified to handle multiple terminals.
-      awesompleteDivUl = document.querySelector('#terminal1 div.awesomplete > ul');
-      terminal1.setAwesompleteDiv(awesompleteDivUl);
+      awesompleteDivUl1 = document.querySelector('#terminal1 div.awesomplete > ul');
+      terminal1.setAwesompleteDiv(awesompleteDivUl1);
+      awesompleteDivUl2 = document.querySelector('#terminal2 div.awesomplete > ul');
+      terminal2.setAwesompleteDiv(awesompleteDivUl2);
+      awesompleteDivUl3 = document.querySelector('#terminal3 div.awesomplete > ul');
+      terminal3.setAwesompleteDiv(awesompleteDivUl3);
+      awesompleteDivUl4 = document.querySelector('#terminal4 div.awesomplete > ul');
+      terminal4.setAwesompleteDiv(awesompleteDivUl4);
     }
 
     // Set up dashboard
@@ -235,7 +282,7 @@ var awesomplete = true;
       gutterSize: 8,
       cursor: 'row-resize'
     });
-    
+
     // Initialize settings form
     nlform = new NLForm( document.getElementById( 'nl-form' ) );
   };

@@ -40,9 +40,7 @@ app.on('ready', function () {
     minHeight: 600,
     width: 980,
     height: 760, 
-    autoHideMenuBar: true, 
-    title: 'Convolv', 
-    icon: '../images/convolv-icon.ico'
+    autoHideMenuBar: true
   });
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');

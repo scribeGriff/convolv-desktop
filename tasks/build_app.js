@@ -16,29 +16,29 @@ var srcDir = jetpack.cwd('./src');
 var destDir = jetpack.cwd('./app');
 
 gulp.task('bundle', function () {
-    return Promise.all([
-        bundle(srcDir.path('background.js'), destDir.path('background.js')),
-    ]);
+  return Promise.all([
+    bundle(srcDir.path('background.js'), destDir.path('background.js')),
+  ]);
 });
 
 gulp.task('environment', function () {
-    var configFile = 'config/env_' + utils.getEnvName() + '.json';
-    projectDir.copy(configFile, destDir.path('env.json'), { overwrite: true });
+  var configFile = 'config/env_' + utils.getEnvName() + '.json';
+  projectDir.copy(configFile, destDir.path('env.json'), { overwrite: true });
 });
 
 gulp.task('watch', function () {
-    var beepOnError = function (done) {
-        return function (err) {
-            if (err) {
-                utils.beepSound();
-            }
-            done(err);
-        };
+  var beepOnError = function (done) {
+    return function (err) {
+      if (err) {
+        utils.beepSound();
+      }
+      done(err);
     };
+  };
 
-    watch('src/**/*.js', batch(function (events, done) {
-        gulp.start('bundle', beepOnError(done));
-    }));
+  watch('src/**/*.js', batch(function (events, done) {
+    gulp.start('bundle', beepOnError(done));
+  }));
 });
 
 gulp.task('build', ['bundle', 'environment']);

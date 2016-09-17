@@ -4,7 +4,7 @@
 */
 
 /* global math:false, katex: false, awesomplete: false */
-/* jshint node: true, browser: true, esnext: true, -W040: true */
+/* jshint node: true, browser: true, esnext: true, -W040: true, -W069: true */
 
 (function (global, undefined) {
   "use strict";
@@ -30,8 +30,10 @@
     var matchSupportCmds = /\b^getdata\b.*|\b^outy\b.*|\b^outn\b.*|\b^outq\b.*|\b^outqn\b.*|\b^outr\b.*|\b^outrn\b.*|\b^outz\b.*|\b^length\b.*|\b^addseqs\b.*|\b^subseqs\b.*$/;
 
     var extensions = Array.prototype.slice.call(arguments, 2);
+    
+    var _historyID = 'history-' + containerID;
 
-    var _history = localStorage.history ? JSON.parse(localStorage.history) : [];
+    var _history = localStorage[_historyID] ? JSON.parse(localStorage[_historyID]) : [];
     var _histpos = _history.length;
     var _histtemp = '';
 
@@ -168,7 +170,7 @@
       // Save shell history.
       if (cmdline) {
         _history[_history.length] = cmdline;
-        localStorage.history = JSON.stringify(_history);
+        localStorage[_historyID] = JSON.stringify(_history);
         _histpos = _history.length;
       }
 
