@@ -7,9 +7,8 @@
 
     <link rel="stylesheet" href="katex-0.6.0/katex.min.css">
     <link rel="stylesheet" href="css/ink-flex.min.css">
-    <!--<link rel="stylesheet" href="css/demo.css">-->
-    <link rel="stylesheet" href="css/component.css">
-    <link rel="stylesheet" href="css/component-nlform-fixed.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nlform.css">
     <link rel="stylesheet" href="css/awesomplete.css">
     <link rel="stylesheet" href="css/terminal.css">
     <link rel="stylesheet" href="css/split.css">
@@ -18,15 +17,16 @@
     <link rel="stylesheet" href="fonts/OpenSans/OpenSans.css">
     <link rel="stylesheet" href="fonts/Raleway/Raleway.css">
     <link rel="stylesheet" href="fonts/Hack/css/hack-extended.css">
-    
+
     <!-- this may not be needed anymore -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.0/es6-shim.min.js"></script>
-    
+
     <!-- this may not work for this project - may need to switch to babyparse -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
-    
+
     <script src="katex-0.6.0/katex.min.js"></script>
 
+    <script src="js/ink-all.min.js"></script>
     <script src="js/Blob.js"></script>
     <script src="js/FileSaver.min.js"></script>
     <script src="js/awesomplete.js"></script>
@@ -113,42 +113,115 @@
       </div>
       <div class="page" id="page-settings">
         <div class="nl-container">
-          <div class="nl-main clearfix">
-            <header>
-              <h1>General Settings</h1>	
-            </header>
-            <form id="nl-form" class="nl-form">
-              Set console theme to   
-              <select>
-                <option value="1" selected>monokai</option>
-                <option value="2">github</option>
-                <option value="3">xcode</option>
-                <option value="4">obsidian</option>
-                <option value="5">vs</option>
-                <option value="6">arta</option>
-                <option value="7">railcasts</option>
-                <option value="8">chalkboard</option>
-                <option value="8">dark</option>
-              </select>.<br>
-              Set the displayed precision to 
-              <select>
-                <option value="1" selected>8</option>
-                <option value="2">9</option>
-                <option value="3">10</option>
-                <option value="4">11</option>
-                <option value="5">12</option>
-              </select> significant digits.<br>
-              Code hinting is  
-              <select>
-                <option value="1" selected>enabled</option>
-                <option value="2">disabled</option>
-              </select>.<br>
-              in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
-              <div class="nl-submit-wrap">
-                <button class="nl-submit" type="submit">save settings</button>
+          <!-- replace 'top' with 'bottom', 'left' or 'right' to reposition navigation -->
+          <div id="myTabs" class="ink-tabs left" data-prevent-url-change="true">
+            <!-- If you're using 'bottom' positioning, put this div AFTER the content. -->
+            <ul class="tabs-nav black">
+              <li><a class="tabs-tab" href="#general">General</a></li>
+              <li><a class="tabs-tab" href="#console">Console</a></li>
+              <li><a class="tabs-tab" href="#dashboard">Dashboard</a></li>
+              <li><a class="tabs-tab" href="#interface">Interface</a></li>
+              <li><a class="tabs-tab" href="#security">Security</a></li>
+            </ul>
+
+            <!-- Now just place your content -->
+            <div id="general" class="tabs-content">
+              <div class="nl-main clearfix">
+                <header>
+                  <h3>General Settings</h3>	
+                </header>
+                <form id="nl-form" class="nl-form">
+                  Set console theme to   
+                  <select>
+                    <option value="1" selected>monokai</option>
+                    <option value="2">github</option>
+                    <option value="3">xcode</option>
+                    <option value="4">obsidian</option>
+                    <option value="5">vs</option>
+                    <option value="6">arta</option>
+                    <option value="7">railcasts</option>
+                    <option value="8">chalkboard</option>
+                    <option value="8">dark</option>
+                  </select>.<br>
+                  Set the displayed precision to 
+                  <select>
+                    <option value="1" selected>8</option>
+                    <option value="2">9</option>
+                    <option value="3">10</option>
+                    <option value="4">11</option>
+                    <option value="5">12</option>
+                  </select> significant digits.<br>
+                  Code hinting is  
+                  <select>
+                    <option value="1" selected>enabled</option>
+                    <option value="2">disabled</option>
+                  </select>.<br>
+                  in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
+                  <div class="nl-submit-wrap">
+                    <button class="nl-submit" type="submit">save settings</button>
+                  </div>
+                  <div class="nl-overlay"></div>
+                </form>
               </div>
-              <div class="nl-overlay"></div>
-            </form></div></div>
+            </div>
+            <div id="console" class="tabs-content">
+              <div class="nl-main clearfix">
+                <header>
+                  <h3>Console Settings</h3>	
+                </header>
+                <form class="nl-form">
+                  Add console settings here...
+                  <div class="nl-submit-wrap">
+                    <button class="nl-submit" type="submit">save settings</button>
+                  </div>
+                  <div class="nl-overlay"></div>
+                </form>
+              </div>
+            </div>
+            <div id="dashboard" class="tabs-content">
+              <div class="nl-main clearfix">
+                <header>
+                  <h3>Dashboard Settings</h3>	
+                </header>
+                <form class="nl-form">
+                  Add dashboard settings here...
+                  <div class="nl-submit-wrap">
+                    <button class="nl-submit" type="submit">save settings</button>
+                  </div>
+                  <div class="nl-overlay"></div>
+                </form>
+              </div>
+            </div>
+            <div id="interface" class="tabs-content">
+              <div class="nl-main clearfix">
+                <header>
+                  <h3>Interface Settings</h3>	
+                </header>
+                <form class="nl-form">
+                  Add interface settings here...
+                  <div class="nl-submit-wrap">
+                    <button class="nl-submit" type="submit">save settings</button>
+                  </div>
+                  <div class="nl-overlay"></div>
+                </form>
+              </div>
+            </div>
+            <div id="security" class="tabs-content">
+              <div class="nl-main clearfix">
+                <header>
+                  <h3>Security Settings</h3>	
+                </header>
+                <form class="nl-form">
+                  Add security settings here...
+                  <div class="nl-submit-wrap">
+                    <button class="nl-submit" type="submit">save settings</button>
+                  </div>
+                  <div class="nl-overlay"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <!--<input type="file" id="fileElem" name="files[]" style="display:none">-->
     </div>

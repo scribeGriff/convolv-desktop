@@ -1,4 +1,4 @@
-/* global NLForm: false, Split: false, katex: false, document: false, Awesomplete: false, Papa: false, saveAs: false */
+/* global NLForm: false, Split: false, katex: false, document: false, Awesomplete: false, Papa: false, saveAs: false, Ink: false */
 /* jshint node: true, browser: true, loopfunc: true, esnext: true */
 
 var Highcharts = require('highcharts');
@@ -190,6 +190,10 @@ var awesomplete = true;
   }
 
   window.onload = function() {
+    Ink.requireModules( ['Ink.Dom.Selector_1','Ink.UI.Tabs_1'], function( Selector, Tabs ){
+        var tabsObj = new Tabs('#myTabs');
+    });
+    
     if (awesomplete) {
       cmdinput1 = document.getElementById("autocomp-terminal1");
       cmdinput2 = document.getElementById("autocomp-terminal2");

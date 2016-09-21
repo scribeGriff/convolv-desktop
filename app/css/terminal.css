@@ -127,7 +127,7 @@ a:hover {
 }
 
 .terminal .prefix {
-  margin-left: 25px;
+  margin-left: 35px;
 }
 
 .terminal output table.input-line td:last-child {
@@ -161,7 +161,7 @@ a:hover {
 }
 
 .terminal table.ink-table {
-  margin-left: 3px;
+  margin-left: 24px;
 }
 
 /* Monokai theme */

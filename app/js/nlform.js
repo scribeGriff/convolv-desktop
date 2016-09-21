@@ -1,3 +1,5 @@
+/* jshint node: true, browser: true, esnext: true */
+
 /**
  * nlform.js v1.0.0
  * http://www.codrops.com
@@ -8,6 +10,7 @@
  * Copyright 2013, Codrops
  * http://www.codrops.com
  */
+
 ;( function( window ) {
 
 	'use strict';
@@ -153,14 +156,13 @@
 			this.form.fldOpen = this.pos;
 			var self = this;
 			this.fld.className += ' nl-field-open';
-			this._checkPosition()
+			this._checkPosition();
 		},
 		_checkPosition: function() {
 			var ul = this.fld.querySelector('ul');
 			var left = this._getOffset(ul).left;
 
-			var windowWidth = document.documentElement.clientWidth
-				|| document.body.clientWidth;
+			var windowWidth = document.documentElement.clientWidth || document.body.clientWidth;
 
 			if (windowWidth < left + ul.scrollWidth) {
 				var diff = windowWidth - (left + ul.scrollWidth);
