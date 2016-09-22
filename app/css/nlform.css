@@ -32,6 +32,33 @@ body, html { font-size: 100%; padding: 0; margin: 0;}*/
   width: 10em;
 }
 
+.ink-tabs.left>.tabs-nav li.active {
+  margin: 0;
+}
+
+.ink-tabs .tabs-nav li.active a {
+  color: #f2f2f2;
+  cursor: default;
+  text-decoration: none;
+  background: #343f48;
+  border: 0;
+}
+
+.ink-tabs .tabs-nav li.active a:hover {
+  background: #343f48;
+}
+
+.ink-tabs .tabs-nav li a {
+  padding: .5em 1em;
+  display: block;
+  border: 0;
+  color: #c2c2c2;
+}
+
+.ink-tabs .tabs-nav li a:hover {
+  background: #5e6972;
+}
+
 /* Header Style */
 .nl-main,
 .nl-container > header {
