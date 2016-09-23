@@ -155,19 +155,22 @@ header {
 .nl-form select  {
   /*line-height: 1.5em;*/
   display: inline-block;
-  color: #b14943;
+  color: #2292d0;
   cursor: pointer;
-  border-bottom: 1px dashed #b14943;
+  /*border-bottom: 1px solid #2292d0;*/
+}
+
+.nl-field-toggle:hover {
+  color: #2292d0;
+  border-bottom: 1px solid #2292d0;
 }
 
 /* drop-down list / text element */
 .nl-field ul {
   position: absolute;
   visibility: hidden;
-  background: #76C3BD;
-  left: -0.5em;
-  top: 50%;
-  font-size: 80%;
+  background: #2292d0;
+  top: 10%;
   opacity: 0;
   -webkit-transform: translateY(-40%) scale(0.9);
   -moz-transform: translateY(-40%) scale(0.9);
@@ -180,9 +183,9 @@ header {
 .nl-field.nl-field-open ul {
   visibility: visible;
   opacity: 1;
-  -webkit-transform: translateY(-50%) scale(1);
-  -moz-transform: translateY(-50%) scale(1);
-  transform: translateY(-50%) scale(1);
+  -webkit-transform: translateY(-10%) scale(1);
+  -moz-transform: translateY(-10%) scale(1);
+  transform: translateY(-10%) scale(1);
   -webkit-transition: visibility 0s 0s, opacity 0.3s, -webkit-transform 0.3s;
   -moz-transition: visibility 0s 0s, opacity 0.3s, -moz-transform 0.3s;
   transition: visibility 0s 0s, opacity 0.3s, transform 0.3s;
@@ -200,7 +203,7 @@ header {
 }
 
 .nl-dd ul li.nl-dd-checked {
-  color: #478982;
+  color: black;
 }
 
 .no-touch .nl-dd ul li:hover {
@@ -234,8 +237,9 @@ header {
 .nl-dd ul li.nl-dd-checked:before {
   content: "\e000";
   position: absolute;
-  right: 1em;
-  font-size: 50%;
+  right: 0.35em;
+  font-size: 80%;
+  top: 0.1em;
 }
 
 .nl-ti-text ul {
