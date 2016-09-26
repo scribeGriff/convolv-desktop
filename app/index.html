@@ -131,7 +131,7 @@
                   <h3>General Settings</h3>	
                 </header>
                 <form id="nl-form" class="nl-form">
-                  Set console theme to   
+                  <!-- Set console theme to   
                   <select>
                     <option value="1" selected>monokai</option>
                     <option value="2">github</option>
@@ -142,24 +142,36 @@
                     <option value="7">railcasts</option>
                     <option value="8">chalkboard</option>
                     <option value="8">dark</option>
-                  </select>.<br>
-                  Set the displayed precision to 
-                  <select>
-                    <option value="1" selected>8</option>
-                    <option value="2">9</option>
-                    <option value="3">10</option>
-                    <option value="4">11</option>
-                    <option value="5">12</option>
+                  </select>.<br>-->
+                  Set the precision of the displayed result to 
+                  <select id="prec-select">
+                    <option value="prec0">0</option>
+                    <option value="prec1">1</option>
+                    <option value="prec2">2</option>
+                    <option value="prec3">3</option>
+                    <option value="prec4">4</option>
+                    <option value="prec5">5</option>
+                    <option value="prec6">6</option>
+                    <option value="prec7">7</option>
+                    <option value="prec8" selected>8</option>
+                    <option value="prec9">9</option>
+                    <option value="prec10">10</option>
+                    <option value="prec11">11</option>
+                    <option value="prec12">12</option>
+                    <option value="prec13">13</option>
+                    <option value="prec14">14</option>
+                    <option value="prec15">15</option>
+                    <option value="prec16">16</option>
                   </select> significant digits.<br>
-                  Code hinting is  
-                  <select>
-                    <option value="1" selected>enabled</option>
-                    <option value="2">disabled</option>
+                  <!-- Code hinting is  
+                  <select id="hint-select">
+                    <option value="hint-enabled" selected>enabled</option>
+                    <option value="hint-disabled">disabled</option>
                   </select>.<br>
                   in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
                   <div class="nl-submit-wrap">
                     <button class="nl-submit" type="submit">save settings</button>
-                  </div>
+                  </div>-->
                   <div class="nl-overlay"></div>
                 </form>
               </div>

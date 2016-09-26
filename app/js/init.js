@@ -10,7 +10,6 @@ var math = require('mathjs');
 var moment = require('moment');
 
 /* For debugging autocomplete and later perhaps as an option to disable. */
-// TODO: Can this be set by the terminal?
 var awesomplete = true;
 
 (function () {
@@ -19,7 +18,7 @@ var awesomplete = true;
   var preans = '<i class="prefix fa fa-angle-double-right"></i> <span class="answer">',
       preerr = '<i class="prefix fa fa-angle-double-right"></i> <span class="cmderror">',
       sufans = '</span>',
-      precisionVar = 8;  // default output format significant digits.
+      precisionVar, precSelect;  // default output format significant digits.
 
   var termName1 = 'terminal1',
       termName2 = 'terminal2',
@@ -181,6 +180,29 @@ var awesomplete = true;
     '<tr><td>theme <em>name</em></td><td class="answer">change to theme <em>name</em> (monokai, github, xcode, obsidian, vs, arta, railcasts, chalkboard, dark)</td></tr>',
     '</table>'
   ].join('');
+  
+  var settings = {
+    "hint-enabled": true,
+    "hint-disabled": false,
+    "prec0": 0,
+    "prec1": 1,
+    "prec2": 2,
+    "prec3": 3,
+    "prec4": 4,
+    "prec5": 5,
+    "prec6": 6,
+    "prec7": 7,
+    "prec8": 8,
+    "prec9": 9,
+    "prec10": 10,
+    "prec11": 11,
+    "prec12": 12,
+    "prec13": 13,
+    "prec14": 14,
+    "prec15": 15,
+    "prec16": 16,
+    
+  };
 
   if (localStorage.getItem("visitor") === null) {
     localStorage.setItem("visitor", new Date());
@@ -188,12 +210,27 @@ var awesomplete = true;
   } else {
     welcome1 = "Console 1";
   }
+  
+  if (localStorage.getItem("precision") === null) {
+    localStorage.setItem("precision", "prec8");
+    precisionVar = 8;
+  } else {
+    precisionVar = settings[localStorage.getItem("precision")];
+  }
 
   window.onload = function() {
-    Ink.requireModules( ['Ink.Dom.Selector_1','Ink.UI.Tabs_1'], function( Selector, Tabs ){
-        var tabsObj = new Tabs('#myTabs');
+    Ink.requireModules( ['Ink.Dom.Selector_1','Ink.UI.Tabs_1'], function( Selector, Tabs ) {
+      var tabsObj = new Tabs('#myTabs');
     });
+
+    precSelect = document.getElementById('prec-select');
+    precSelect.value = localStorage.getItem("precision");
     
+    document.getElementById('prec-select').addEventListener('change', function() {
+      localStorage.setItem("precision", this.value);
+      precisionVar = settings[this.value];
+    });
+
     if (awesomplete) {
       cmdinput1 = document.getElementById("autocomp-terminal1");
       cmdinput2 = document.getElementById("autocomp-terminal2");
