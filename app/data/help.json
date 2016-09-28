@@ -1139,8 +1139,8 @@
   },
   {
     "Category": "Utilities",
-    "Description": "With no arguments, displays number of significant digits in formatted answer written to console.  If given a space delimited argument, sets the  precision of the displayed answer to a number between 0 and 16 significant digits.",
-    "Example": "precision 12",
+    "Description": "Displays the number of significant digits in a formatted answer written to the console.  The value can be changed in the settings tab under general settings.  The default value is 8.",
+    "Example": "precision",
     "Name": "precision",
     "See also": [
       "theme",
@@ -1148,8 +1148,7 @@
       "help"
     ],
     "Syntax": [
-      "precision",
-      "precision 9"
+      "precision"
     ],
     "Type": "command"
   },

@@ -131,7 +131,7 @@ a:hover {
 }
 
 .terminal output table.input-line td:last-child {
-  padding-left: 1px;
+  /*padding-left: 1px;*/
 }
 
 .terminal table.input-line {

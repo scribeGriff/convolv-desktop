@@ -175,12 +175,11 @@ var awesomplete = true;
     '<tr><td>help</td><td class="answer">displays this help screen</td></tr>',
     '<tr><td>help <em>command</em></td><td class="answer">displays the <em>command</em> documentation</td></tr>',
     '<tr><td>precision</td><td class="answer">displays number of significant digits in formatted answer written to console</td></tr>',
-    '<tr><td>precision  <em>value</em></td><td class="answer">set precision of the displayed answer to <em>[0 - 16]</em> significant digits</td></tr>',
     '<tr><td>theme</td><td class="answer">displays current theme</td></tr>',
     '<tr><td>theme <em>name</em></td><td class="answer">change to theme <em>name</em> (monokai, github, xcode, obsidian, vs, arta, railcasts, chalkboard, dark)</td></tr>',
     '</table>'
   ].join('');
-  
+
   var settings = {
     "hint-enabled": true,
     "hint-disabled": false,
@@ -201,7 +200,7 @@ var awesomplete = true;
     "prec14": 14,
     "prec15": 15,
     "prec16": 16,
-    
+
   };
 
   if (localStorage.getItem("visitor") === null) {
@@ -210,7 +209,7 @@ var awesomplete = true;
   } else {
     welcome1 = "Console 1";
   }
-  
+
   if (localStorage.getItem("precision") === null) {
     localStorage.setItem("precision", "prec8");
     precisionVar = 8;
@@ -225,7 +224,7 @@ var awesomplete = true;
 
     precSelect = document.getElementById('prec-select');
     precSelect.value = localStorage.getItem("precision");
-    
+
     document.getElementById('prec-select').addEventListener('change', function() {
       localStorage.setItem("precision", this.value);
       precisionVar = settings[this.value];
@@ -1111,14 +1110,7 @@ var awesomplete = true;
 
       precision: function precision() {
         if (args && args[0]) {
-          if (args.length > 1) {
-            return preerr + 'Too many arguments' + sufans;
-          } else if (parseInt(args[0]) >= 0 && parseInt(args[0]) <= 16) { 
-            precisionVar = parseInt(args[0]);
-            return ''; 
-          } else {
-            return preerr + 'Invalid precision value: ' + args[0] + sufans;
-          }
+          return preerr + 'The precision command does not accept any arguments.  To change the value of the precision variable, please refer to the settings tab under general settings.' + sufans;
         }
         return preans + precisionVar + sufans;
       },

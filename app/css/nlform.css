@@ -77,6 +77,11 @@ header {
   font-family: 'open_sanssemibold';
 }
 
+.nl-main h5 {
+  font-family: 'open_sanssemibold';
+  margin-bottom: 0.25em;
+}
+
 .nl-container > header span {
   display: block;
   font-size: 60%;
