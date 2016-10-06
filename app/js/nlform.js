@@ -23,7 +23,7 @@
 
   function NLForm( el, elClass ) {
     this.el = el;
-    this.overlay = this.el.querySelector( '.nl-overlay' );
+    //this.overlay = this.el.querySelector( '.nl-overlay' );
     this.elClass = (elClass !== undefined) ? '.' + elClass : '';
     this.fields = [];
     this.fldOpen = -1;
@@ -41,8 +41,11 @@
         self.fldOpen++;
         self.fields.push( new NLField( self, el, 'input', self.fldOpen ) );
       } );
-      this.overlay.addEventListener( 'click', function(ev) { self._closeFlds(); } );
-      this.overlay.addEventListener( 'touchstart', function(ev) { self._closeFlds(); } );
+      Array.prototype.slice.call( this.el.querySelectorAll( '.nl-overlay' ) ).forEach( function( el, i ) {
+        el.addEventListener( 'click', function(ev) { self._closeFlds(); } );
+      } );
+      //this.overlay.addEventListener( 'click', function(ev) { self._closeFlds(); } );
+      //this.overlay.addEventListener( 'touchstart', function(ev) { self._closeFlds(); } );
     },
     _closeFlds : function() {
       if( this.fldOpen !== -1 ) {

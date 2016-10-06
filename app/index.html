@@ -125,25 +125,13 @@
             </ul>
 
             <!-- Now just place your content -->
-            <div id="general" class="tabs-content">
-              <div class="nl-main clearfix">
-                <header>
-                  <h3>General Settings</h3>	
-                </header>
-                <form id="nl-form" class="nl-form">
-                <p>The following settings apply to all consoles.</p>
-                  <!-- Set console theme to   
-                  <select>
-                    <option value="1" selected>monokai</option>
-                    <option value="2">github</option>
-                    <option value="3">xcode</option>
-                    <option value="4">obsidian</option>
-                    <option value="5">vs</option>
-                    <option value="6">arta</option>
-                    <option value="7">railcasts</option>
-                    <option value="8">chalkboard</option>
-                    <option value="8">dark</option>
-                  </select>.<br>-->
+            <form id="nl-form" class="nl-form">
+              <div id="general" class="tabs-content">
+                <div class="nl-main clearfix">
+                  <header>
+                    <h3>General Settings</h3>	
+                  </header>
+                  <p>The following settings apply to all consoles.</p>
                   <h5>Precision</h5>
                   Set the precision of the displayed result to 
                   <select id="prec-select">
@@ -165,75 +153,117 @@
                     <option value="prec15">15</option>
                     <option value="prec16">16</option>
                   </select> significant digits.<br>
-                  <!-- Code hinting is  
-                  <select id="hint-select">
-                    <option value="hint-enabled" selected>enabled</option>
-                    <option value="hint-disabled">disabled</option>
-                  </select>.<br>
-                  in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
-                  <div class="nl-submit-wrap">
-                    <button class="nl-submit" type="submit">save settings</button>
-                  </div>-->
                   <div class="nl-overlay"></div>
-                </form>
+                </div>
               </div>
-            </div>
-            <div id="console" class="tabs-content">
-              <div class="nl-main clearfix">
-                <header>
-                  <h3>Console Settings</h3>	
-                </header>
-                <form class="nl-form">
-                  Add console settings here...
-                  <div class="nl-submit-wrap">
-                    <button class="nl-submit" type="submit">save settings</button>
-                  </div>
+              <div id="console" class="tabs-content">
+                <div class="nl-main clearfix">
+                  <header>
+                    <h3>Console Settings</h3>	
+                  </header>
+                  <h5>Console 1</h5>
+                  Set the theme for this console to    
+                  <select id="theme1-select">
+                    <option value="monokai">monokai</option>
+                    <option value="github">github</option>
+                    <option value="xcode">xcode</option>
+                    <option value="obsidian">obsidian</option>
+                    <option value="vs">vs</option>
+                    <option value="arta">arta</option>
+                    <option value="railcasts">railcasts</option>
+                    <option value="chalkboard">chalkboard</option>
+                    <option value="dark">dark</option>
+                  </select>.
+                  <h5>Console 2</h5>
+                  Set the theme for this console to    
+                  <select id="theme2-select">
+                    <option value="monokai">monokai</option>
+                    <option value="github">github</option>
+                    <option value="xcode">xcode</option>
+                    <option value="obsidian">obsidian</option>
+                    <option value="vs">vs</option>
+                    <option value="arta">arta</option>
+                    <option value="railcasts">railcasts</option>
+                    <option value="chalkboard">chalkboard</option>
+                    <option value="dark">dark</option>
+                  </select>.
+                  <h5>Console 3</h5>
+                  Set the theme for this console to    
+                  <select id="theme3-select">
+                    <option value="monokai">monokai</option>
+                    <option value="github">github</option>
+                    <option value="xcode">xcode</option>
+                    <option value="obsidian">obsidian</option>
+                    <option value="vs">vs</option>
+                    <option value="arta">arta</option>
+                    <option value="railcasts">railcasts</option>
+                    <option value="chalkboard">chalkboard</option>
+                    <option value="dark">dark</option>
+                  </select>.
+                  <h5>Console 4</h5>
+                  Set the theme for this console to    
+                  <select id="theme4-select">
+                    <option value="monokai">monokai</option>
+                    <option value="github">github</option>
+                    <option value="xcode">xcode</option>
+                    <option value="obsidian">obsidian</option>
+                    <option value="vs">vs</option>
+                    <option value="arta">arta</option>
+                    <option value="railcasts">railcasts</option>
+                    <option value="chalkboard">chalkboard</option>
+                    <option value="dark">dark</option>
+                  </select>.
                   <div class="nl-overlay"></div>
-                </form>
+                </div>
               </div>
-            </div>
-            <div id="dashboard" class="tabs-content">
-              <div class="nl-main clearfix">
-                <header>
-                  <h3>Dashboard Settings</h3>	
-                </header>
-                <form class="nl-form">
+              <div id="dashboard" class="tabs-content">
+                <div class="nl-main clearfix">
+                  <header>
+                    <h3>Dashboard Settings</h3>	
+                  </header>
                   Add dashboard settings here...
                   <div class="nl-submit-wrap">
                     <button class="nl-submit" type="submit">save settings</button>
                   </div>
                   <div class="nl-overlay"></div>
-                </form>
+                </div>
               </div>
-            </div>
-            <div id="interface" class="tabs-content">
-              <div class="nl-main clearfix">
-                <header>
-                  <h3>Interface Settings</h3>	
-                </header>
-                <form class="nl-form">
+              <div id="interface" class="tabs-content">
+                <div class="nl-main clearfix">
+                  <header>
+                    <h3>Interface Settings</h3>	
+                  </header>
+                  <!--<form class="nl-form">-->
                   Add interface settings here...
+                  <!-- Code hinting is  
+<select id="hint-select">
+<option value="hint-enabled" selected>enabled</option>
+<option value="hint-disabled">disabled</option>
+</select>.<br>
+in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>-->
                   <div class="nl-submit-wrap">
                     <button class="nl-submit" type="submit">save settings</button>
                   </div>
                   <div class="nl-overlay"></div>
-                </form>
+<!--</form>-->
+                </div>
               </div>
-            </div>
-            <div id="security" class="tabs-content">
-              <div class="nl-main clearfix">
-                <header>
-                  <h3>Security Settings</h3>	
-                </header>
-                <form class="nl-form">
+              <div id="security" class="tabs-content">
+                <div class="nl-main clearfix">
+                  <header>
+                    <h3>Security Settings</h3>	
+                  </header>
+                  <!--<form class="nl-form">-->
                   Add security settings here...
                   <div class="nl-submit-wrap">
                     <button class="nl-submit" type="submit">save settings</button>
                   </div>
                   <div class="nl-overlay"></div>
-                </form>
+<!--</form>-->
+                </div>
               </div>
-            </div>
+              <!--<div class="nl-overlay"></div>-->
+            </form>
           </div>
         </div>
       </div>

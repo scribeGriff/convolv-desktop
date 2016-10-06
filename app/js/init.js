@@ -18,7 +18,7 @@ var awesomplete = true;
   var preans = '<i class="prefix fa fa-angle-double-right"></i> <span class="answer">',
       preerr = '<i class="prefix fa fa-angle-double-right"></i> <span class="cmderror">',
       sufans = '</span>',
-      precisionVar, precSelect;  // default output format significant digits.
+      precisionVar;  // default output format significant digits.
 
   var termName1 = 'terminal1',
       termName2 = 'terminal2',
@@ -30,11 +30,19 @@ var awesomplete = true;
 
   var terminal1, terminal2, terminal3, terminal4, bgcolor, lineShape, points, cmdinput1, cmdinput2, cmdinput3, cmdinput4, autocompleter1, autocompleter2,
       autocompleter3, autocompleter4, helpExt, parseData, isValidColor, welcome1, awesompleteDivUl1, awesompleteDivUl2, awesompleteDivUl3, awesompleteDivUl4, allCommands, parseDataPolar, parseDataSample, parseDataSamplen, createBaseChart, createPolarChart, createSampleChart, consoleCommands, nlform;
+  
+  var theme1, theme2, theme3, theme4;
 
   var chartDiv1 = document.getElementById('chart-div1'),
       chartDiv2 = document.getElementById('chart-div2'),
       chartDiv3 = document.getElementById('chart-div3'),
       chartDiv4 = document.getElementById('chart-div4');
+  
+  var precSelect = document.getElementById('prec-select'),
+      theme1Select = document.getElementById('theme1-select'),
+      theme2Select = document.getElementById('theme2-select'),
+      theme3Select = document.getElementById('theme3-select'),
+      theme4Select = document.getElementById('theme4-select');
 
   var matchThemes = /^monokai|^github|^xcode|^obsidian|^vs|^arta|^railcasts|^chalkboard|^dark/;
 
@@ -200,7 +208,6 @@ var awesomplete = true;
     "prec14": 14,
     "prec15": 15,
     "prec16": 16,
-
   };
 
   if (localStorage.getItem("visitor") === null) {
@@ -216,18 +223,66 @@ var awesomplete = true;
   } else {
     precisionVar = settings[localStorage.getItem("precision")];
   }
+  
+  if (localStorage.getItem("theme1") === null) {
+    theme1 = "monokai";
+  } else {
+    theme1 = localStorage.getItem("theme1");
+  }
+  
+  if (localStorage.getItem("theme2") === null) {
+    theme2 = "monokai";
+  } else {
+    theme2 = localStorage.getItem("theme2");
+  }
+  
+  if (localStorage.getItem("theme3") === null) {
+    theme3 = "monokai";
+  } else {
+    theme3 = localStorage.getItem("theme3");
+  }
+  
+  if (localStorage.getItem("theme4") === null) {
+    theme4 = "monokai";
+  } else {
+    theme4 = localStorage.getItem("theme4");
+  }
 
   window.onload = function() {
     Ink.requireModules( ['Ink.Dom.Selector_1','Ink.UI.Tabs_1'], function( Selector, Tabs ) {
       var tabsObj = new Tabs('#myTabs');
     });
 
-    precSelect = document.getElementById('prec-select');
     precSelect.value = localStorage.getItem("precision");
 
-    document.getElementById('prec-select').addEventListener('change', function() {
+    precSelect.addEventListener('change', function() {
       localStorage.setItem("precision", this.value);
       precisionVar = settings[this.value];
+    });
+    
+    theme1Select.value = theme1;
+    theme2Select.value = theme2;
+    theme3Select.value = theme3;
+    theme4Select.value = theme4;
+    
+    theme1Select.addEventListener('change', function() {
+      localStorage.setItem("theme1", this.value);
+      terminal1.setTheme(this.value);
+    });
+    
+    theme2Select.addEventListener('change', function() {
+      localStorage.setItem("theme2", this.value);
+      terminal2.setTheme(this.value);
+    });
+    
+    theme3Select.addEventListener('change', function() {
+      localStorage.setItem("theme3", this.value);
+      terminal3.setTheme(this.value);
+    });
+    
+    theme4Select.addEventListener('change', function() {
+      localStorage.setItem("theme4", this.value);
+      terminal4.setTheme(this.value);
     });
 
     if (awesomplete) {
@@ -333,7 +388,7 @@ var awesomplete = true;
   });
 
   // Convert the termName1 DOM element into an interactive terminal.
-  terminal1 = new Terminal(termName1, {welcome: welcome1, prompt: '1 '}, {
+  terminal1 = new Terminal(termName1, {welcome: welcome1, prompt: '1 ', theme: theme1}, {
     execute: function execute(cmd, args) {
       var parser = terminal1.getParser();
       var cmds = consoleCommands(cmd, args, terminal1, chartDiv1, parser, termName1);
@@ -397,7 +452,7 @@ var awesomplete = true;
   });
 
   // Convert the termName2 DOM element into an interactive terminal.
-  terminal2 = new Terminal(termName2, {welcome: "Console 2", prompt: '2 '}, {
+  terminal2 = new Terminal(termName2, {welcome: "Console 2", prompt: '2 ', theme: theme2}, {
     execute: function execute(cmd, args) {
       var parser = terminal2.getParser();
       var cmds = consoleCommands(cmd, args, terminal2, chartDiv2, parser, termName2);
@@ -461,7 +516,7 @@ var awesomplete = true;
   });
 
   // Convert the termName3 DOM element into an interactive terminal.
-  terminal3 = new Terminal(termName3, {welcome: "Console 3", prompt: '3 '}, {
+  terminal3 = new Terminal(termName3, {welcome: "Console 3", prompt: '3 ', theme: theme3}, {
     execute: function execute(cmd, args) {
       var parser = terminal3.getParser();
       var cmds = consoleCommands(cmd, args, terminal3, chartDiv3, parser, termName3);
@@ -525,7 +580,7 @@ var awesomplete = true;
   });
 
   // Convert the termName4 DOM element into an interactive terminal.
-  terminal4 = new Terminal(termName4, {welcome: "Console 4", prompt: '4 '}, {
+  terminal4 = new Terminal(termName4, {welcome: "Console 4", prompt: '4 ', theme: theme4}, {
     execute: function execute(cmd, args) {
       var parser = terminal4.getParser();
       var cmds = consoleCommands(cmd, args, terminal4, chartDiv4, parser, termName4);
