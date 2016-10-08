@@ -184,7 +184,6 @@ var awesomplete = true;
     '<tr><td>help <em>command</em></td><td class="answer">displays the <em>command</em> documentation</td></tr>',
     '<tr><td>precision</td><td class="answer">displays number of significant digits in formatted answer written to console</td></tr>',
     '<tr><td>theme</td><td class="answer">displays current theme</td></tr>',
-    '<tr><td>theme <em>name</em></td><td class="answer">change to theme <em>name</em> (monokai, github, xcode, obsidian, vs, arta, railcasts, chalkboard, dark)</td></tr>',
     '</table>'
   ].join('');
 
@@ -1151,14 +1150,7 @@ var awesomplete = true;
 
       theme: function theme() {
         if (args && args[0]) {
-          if (args.length > 1) {
-            return preerr + 'Too many arguments' + sufans;
-          } else if (args[0].match(matchThemes)) { 
-            terminal.setTheme(args[0]);
-            return ''; 
-          } else {
-            return preerr + 'Invalid theme' + sufans;
-          }
+          return preerr + 'The theme command does not accept any arguments.  To set the theme for each console, please refer to the settings tab under console settings.' + sufans;
         }
         return preans + terminal.getTheme() + sufans;
       },

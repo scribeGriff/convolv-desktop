@@ -94,6 +94,17 @@ header {
   padding: 0 0 0.6em 0.1em;
 }
 
+.nl-theme {
+  background-color: rgba(128,128,128,0.1);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.nl-theme p {
+  padding-left: 10px;
+}
+
 /* Main Content */
 
 .nl-menu {
