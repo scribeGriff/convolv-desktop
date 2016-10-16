@@ -30,14 +30,19 @@ var awesomplete = true;
 
   var terminal1, terminal2, terminal3, terminal4, bgcolor, lineShape, points, cmdinput1, cmdinput2, cmdinput3, cmdinput4, autocompleter1, autocompleter2,
       autocompleter3, autocompleter4, helpExt, parseData, isValidColor, welcome1, awesompleteDivUl1, awesompleteDivUl2, awesompleteDivUl3, awesompleteDivUl4, allCommands, parseDataPolar, parseDataSample, parseDataSamplen, createBaseChart, createPolarChart, createSampleChart, consoleCommands, nlform;
-  
+
   var theme1, theme2, theme3, theme4;
 
   var chartDiv1 = document.getElementById('chart-div1'),
       chartDiv2 = document.getElementById('chart-div2'),
       chartDiv3 = document.getElementById('chart-div3'),
       chartDiv4 = document.getElementById('chart-div4');
-  
+
+  var chartConsole1 = document.getElementById('chart-console1'),
+      chartConsole2 = document.getElementById('chart-console2'),
+      chartConsole3 = document.getElementById('chart-console3'),
+      chartConsole4 = document.getElementById('chart-console4');
+
   var precSelect = document.getElementById('prec-select'),
       theme1Select = document.getElementById('theme1-select'),
       theme2Select = document.getElementById('theme2-select'),
@@ -222,25 +227,25 @@ var awesomplete = true;
   } else {
     precisionVar = settings[localStorage.getItem("precision")];
   }
-  
+
   if (localStorage.getItem("theme1") === null) {
     theme1 = "monokai";
   } else {
     theme1 = localStorage.getItem("theme1");
   }
-  
+
   if (localStorage.getItem("theme2") === null) {
     theme2 = "monokai";
   } else {
     theme2 = localStorage.getItem("theme2");
   }
-  
+
   if (localStorage.getItem("theme3") === null) {
     theme3 = "monokai";
   } else {
     theme3 = localStorage.getItem("theme3");
   }
-  
+
   if (localStorage.getItem("theme4") === null) {
     theme4 = "monokai";
   } else {
@@ -258,27 +263,27 @@ var awesomplete = true;
       localStorage.setItem("precision", this.value);
       precisionVar = settings[this.value];
     });
-    
+
     theme1Select.value = theme1;
     theme2Select.value = theme2;
     theme3Select.value = theme3;
     theme4Select.value = theme4;
-    
+
     theme1Select.addEventListener('change', function() {
       localStorage.setItem("theme1", this.value);
       terminal1.setTheme(this.value);
     });
-    
+
     theme2Select.addEventListener('change', function() {
       localStorage.setItem("theme2", this.value);
       terminal2.setTheme(this.value);
     });
-    
+
     theme3Select.addEventListener('change', function() {
       localStorage.setItem("theme3", this.value);
       terminal3.setTheme(this.value);
     });
-    
+
     theme4Select.addEventListener('change', function() {
       localStorage.setItem("theme4", this.value);
       terminal4.setTheme(this.value);
@@ -357,24 +362,59 @@ var awesomplete = true;
       terminal4.setAwesompleteDiv(awesompleteDivUl4);
     }
 
-    // Set up dashboard
+    // Set up dashboard and chart reflows.
+    // Chart reflows are necessary when container div is resized without a window resize.
     Split(['#a', '#b'], {
       gutterSize: 8,
-      cursor: 'col-resize'
+      cursor: 'col-resize',
+      onDragEnd: function() {
+        console.log("all charts need reflow");
+        console.log(Highcharts.charts);
+        for (let chart of Highcharts.charts) {
+          if (chart !== undefined) {
+            if (chart.renderTo.id.includes("console")) {
+              console.log(chart.renderTo.id);
+              chart.reflow();
+            }
+          }
+        }
+      }
     });
 
-    Split(['#c', '#d'], {
+    Split(['#chart-console1', '#chart-console3'], {
       direction: 'vertical',
       sizes: [50, 50],
       gutterSize: 8,
-      cursor: 'row-resize'
+      cursor: 'row-resize',
+      onDragEnd: function() {
+        console.log("drag console 1 and 3");
+        for (let chart of Highcharts.charts) {
+          if (chart !== undefined) {
+            if (chart.renderTo.id.includes("1") || chart.renderTo.id.includes("3")) {
+              console.log(chart.renderTo.id);
+              chart.reflow();
+            }
+          }
+        }
+      }
     });
 
-    Split(['#e', '#f'], {
+    Split(['#chart-console2', '#chart-console4'], {
       direction: 'vertical',
       sizes: [50, 50],
       gutterSize: 8,
-      cursor: 'row-resize'
+      cursor: 'row-resize',
+      onDragEnd: function() {
+        console.log("drag console 2 and 4");
+        for (let chart of Highcharts.charts) {
+          if (chart !== undefined) {
+            if (chart.renderTo.id.includes("2") || chart.renderTo.id.includes("4")) {
+              console.log(chart.renderTo.id);
+              chart.reflow();
+            }
+          }
+        }
+      }
     });
 
     // Initialize settings form
@@ -390,7 +430,7 @@ var awesomplete = true;
   terminal1 = new Terminal(termName1, {welcome: welcome1, prompt: '1 ', theme: theme1}, {
     execute: function execute(cmd, args) {
       var parser = terminal1.getParser();
-      var cmds = consoleCommands(cmd, args, terminal1, chartDiv1, parser, termName1);
+      var cmds = consoleCommands(cmd, args, terminal1, chartDiv1, chartConsole1, parser, termName1);
 
       if (typeof cmds[cmd] !== 'function') {
         var result, katstr, formres;
@@ -454,7 +494,7 @@ var awesomplete = true;
   terminal2 = new Terminal(termName2, {welcome: "Console 2", prompt: '2 ', theme: theme2}, {
     execute: function execute(cmd, args) {
       var parser = terminal2.getParser();
-      var cmds = consoleCommands(cmd, args, terminal2, chartDiv2, parser, termName2);
+      var cmds = consoleCommands(cmd, args, terminal2, chartDiv2, chartConsole2, parser, termName2);
 
       if (typeof cmds[cmd] !== 'function') {
         var result, katstr, formres;
@@ -518,7 +558,7 @@ var awesomplete = true;
   terminal3 = new Terminal(termName3, {welcome: "Console 3", prompt: '3 ', theme: theme3}, {
     execute: function execute(cmd, args) {
       var parser = terminal3.getParser();
-      var cmds = consoleCommands(cmd, args, terminal3, chartDiv3, parser, termName3);
+      var cmds = consoleCommands(cmd, args, terminal3, chartDiv3, chartConsole3, parser, termName3);
 
       if (typeof cmds[cmd] !== 'function') {
         var result, katstr, formres;
@@ -582,7 +622,7 @@ var awesomplete = true;
   terminal4 = new Terminal(termName4, {welcome: "Console 4", prompt: '4 ', theme: theme4}, {
     execute: function execute(cmd, args) {
       var parser = terminal4.getParser();
-      var cmds = consoleCommands(cmd, args, terminal4, chartDiv4, parser, termName4);
+      var cmds = consoleCommands(cmd, args, terminal4, chartDiv4, chartConsole4, parser, termName4);
 
       if (typeof cmds[cmd] !== 'function') {
         var result, katstr, formres;
@@ -1057,10 +1097,11 @@ var awesomplete = true;
     return image.style.color !== "rgb(255, 255, 255)";
   };
 
-  consoleCommands = function consoleCommands(cmd, args, terminal, chartDiv, parser, termName) {
+  consoleCommands = function consoleCommands(cmd, args, terminal, chartDiv, chartConsole, parser, termName) {
     return {
       clear: function clear() {
-        var chart = terminal.getChart();
+        var chart = terminal.getChart(),
+            chartDB = terminal.getChartDashboard();
         if (args && args[0]) {
           if (args.length > 1) {
             return preerr + 'Too many arguments' + sufans;
@@ -1076,12 +1117,16 @@ var awesomplete = true;
             if (chart) {
               chart.destroy();
               terminal.setChart(null);
+              chartDB.destroy();
+              terminal.setChartDashboard(null);
             }
             return '';
           } else if (args[0] === 'chart') {
             if (chart) {
               chart.destroy();
               terminal.setChart(null);
+              chartDB.destroy();
+              terminal.setChartDashboard(null);
             }
             return '';
           } else if (args[0] === 'storage') {
@@ -1462,6 +1507,7 @@ var awesomplete = true;
       line: function line() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               enableMarkers: false
             };
@@ -1516,11 +1562,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, options);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';

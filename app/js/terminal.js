@@ -47,6 +47,7 @@
     var _acIsOpen = false;
     // Declare a chart as empty.
     var _chart = null;
+    var _chartDashboard = null;
     // For terminal to detect if command completion should be above or below input.
     var _awesompleteDivUl = null;
     // Creates a new math parser for this terminal's scope.
@@ -366,6 +367,12 @@
       },
       getChart: function getChart() {
         return _chart;
+      },
+      setChartDashboard: function setChartDashboard(chart) {
+        _chartDashboard = chart;
+      },
+      getChartDashboard: function getChartDashboard() {
+        return _chartDashboard;
       },
       getParser: function getParser() {
         return _parser;
