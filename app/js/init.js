@@ -417,6 +417,13 @@ var awesomplete = true;
       }
     });
 
+    var gutters = document.querySelectorAll('.gutter');
+    console.log(gutters);
+
+    for (let gutter of gutters) {
+      gutter.classList.add('gutter-monokai');
+    }
+
     // Initialize settings form
     nlform = new NLForm( document.getElementById( 'nl-form' ) );
   };
@@ -895,7 +902,10 @@ var awesomplete = true;
       yOffset: 10,
       legLayout: 'vertical',
       legAlign: 'right',
-      legVerticalAlign: 'top'
+      legVerticalAlign: 'top',
+      legX: 0,
+      legY: 0,
+      navButtonEnabled: true
     };
 
     var options = uoptions || defaults;
@@ -923,6 +933,9 @@ var awesomplete = true;
     options.legLayout = typeof options.legLayout === "undefined" ? defaults.legLayout : options.legLayout;
     options.legAlign = typeof options.legAlign === "undefined" ? defaults.legAlign : options.legAlign;
     options.legVerticalAlign = typeof options.legVerticalAlign === "undefined" ? defaults.legVerticalAlign : options.legVerticalAlign;
+    options.legX = typeof options.legX === "undefined" ? defaults.legX : options.legX;
+    options.legY = typeof options.legY === "undefined" ? defaults.legY : options.legY;
+    options.navButtonEnabled = typeof options.navButtonEnabled === "undefined" ? defaults.navButtonEnabled : options.navButtonEnabled;
 
     return Highcharts.chart(container, {
       chart: {
@@ -934,7 +947,9 @@ var awesomplete = true;
       legend: {
         layout: options.legLayout,
         align: options.legAlign,
-        verticalAlign: options.legVerticalAlign
+        verticalAlign: options.legVerticalAlign,
+        x: options.legX,
+        y: options.legY
       },
       plotOptions: {
         series: {
@@ -973,7 +988,12 @@ var awesomplete = true;
       title: {
         text: options.title
       },
-      series: chartData
+      series: chartData,
+      navigation: {
+        buttonOptions: {
+          enabled: options.navButtonEnabled
+        }
+      }
     });
   };
 
@@ -1510,6 +1530,11 @@ var awesomplete = true;
             chartDashboard = terminal.getChartDashboard(),
             options = {
               enableMarkers: false
+            },
+            optionsDashboard = {
+              enableMarkers: false,
+              navButtonEnabled: false,
+              legY: 100
             };
         if (args.length === 0) {
           return preerr + 'The line chart needs to know what data to plot.  Please see <em>help line</em> for more information.' + sufans;
@@ -1570,7 +1595,7 @@ var awesomplete = true;
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
 
-        chartDashboard = createBaseChart(chartConsole, dataSeries, options);
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
         terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
