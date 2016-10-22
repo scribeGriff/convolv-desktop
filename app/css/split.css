@@ -1,3 +1,5 @@
+/*csslint adjoining-classes: false, box-sizing: false*/
+
 .split {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -13,8 +15,8 @@
 }
 
 .split-dashboard {
-  padding: 20px;
   overflow: hidden;
+  padding: 20px;
 }
 
 .gutter {
@@ -37,6 +39,7 @@
   height: 100%;
 }
 
+/* Monokai theeme */
 .split-content-monokai {
   background: #272822;
   border: 1px solid #3E4438;
@@ -48,5 +51,125 @@
 }
 
 .border-dashboard-monokai {
-  border: 4px solid #3E4438
+  border: 4px solid #3E4438;
+}
+
+/* Github theme */
+.split-content-github {
+  background: #f8f8f8;
+  border: 1px solid #767F88;
+  box-shadow: inset 0 1px 2px black;
+}
+
+.gutter-github {
+  background-color: #767F88;
+}
+
+.border-dashboard-github {
+  border: 4px solid #767F88;
+}
+
+/* XCode theme */
+.split-content-xcode {
+  background: #fff;
+  border: 1px solid #515151;
+  box-shadow: inset 0 1px 2px black;
+}
+
+.gutter-xcode {
+  background-color: #515151;
+}
+
+.border-dashboard-xcode {
+  border: 4px solid #515151;
+}
+
+/* Obsidian theme */
+.split-content-obsidian {
+  background: #282b2e;
+  border: 1px solid #323B39;
+  box-shadow: inset 0 1px 2px black;
+}
+
+.gutter-obsidian {
+  background-color: #323B39;
+}
+
+.border-dashboard-obsidian {
+  border: 4px solid #323B39;
+}
+
+/* Visual Studio theme */
+.split-content-vs {
+  background: white;
+  border: 1px solid #59554E;
+  box-shadow: inset 0 1px 2px black;
+}
+
+.gutter-vs {
+  background-color: #59554E;
+}
+
+.border-dashboard-vs {
+  border: 4px solid #59554E;
+}
+
+/* Arta theme */
+.split-content-arta {
+  background: #222;
+  border: 1px solid #756657;
+  box-shadow: inset 0 1px 2px black;
+}
+
+.gutter-arta {
+  background-color: #756657;
+}
+
+.border-dashboard-arta {
+  border: 4px solid #756657;
+}
+
+/* Railcasts theme */
+.split-content-railcasts {
+  background: #232323;
+  border: 1px solid #4B4545;
+  box-shadow: inset 0 1px 2px black;
+}
+
+.gutter-railcasts {
+  background-color: #4B4545;
+}
+
+.border-dashboard-railcasts {
+  border: 4px solid #4B4545;
+}
+
+/* Chalkboard theme */
+.split-content-chalkboard {
+  background: darkslategray;
+  border: 1px solid #151C1C;
+  box-shadow: inset 0 1px 2px black;
+}
+
+.gutter-chalkboard {
+  background-color: #151C1C;
+}
+
+.border-dashboard-chalkboard {
+  border: 4px solid #151C1C;
+}
+
+/* dark theme */
+.split-content-dark {
+  background: #040004;
+  border: 1px solid #413D3D;
+  box-shadow: inset 0 1px 2px black;
+}
+
+.gutter-dark {
+  background-color: #413D3D;
+}
+
+.border-dashboard-dark {
+  border: 4px solid #413D3D;
 }

@@ -101,14 +101,14 @@
           </div>
         </div>
       </div>
-      <div class="page border-dashboard-monokai" id="page-dashboard">
+      <div class="page" id="page-dashboard">
         <div id="a" class="split split-horizontal">
-          <div id="chart-console1" class="split-dashboard split split-content-monokai"></div>
-          <div id="chart-console3" class="split-dashboard split split-content-monokai"></div>
+          <div id="chart-console1" class="split-dashboard split"></div>
+          <div id="chart-console3" class="split-dashboard split"></div>
         </div>
         <div id="b" class="split split-horizontal">
-          <div id="chart-console2" class="split-dashboard split split-content-monokai"></div>
-          <div id="chart-console4" class="split-dashboard split split-content-monokai"></div>
+          <div id="chart-console2" class="split-dashboard split"></div>
+          <div id="chart-console4" class="split-dashboard split"></div>
         </div>
       </div>
       <div class="page" id="page-settings">
@@ -120,8 +120,8 @@
               <li><a class="tabs-tab" href="#general">General</a></li>
               <li><a class="tabs-tab" href="#console">Console</a></li>
               <li><a class="tabs-tab" href="#dashboard">Dashboard</a></li>
-              <li><a class="tabs-tab" href="#interface">Interface</a></li>
-              <li><a class="tabs-tab" href="#security">Security</a></li>
+              <!--<li><a class="tabs-tab" href="#interface">Interface</a></li>
+              <li><a class="tabs-tab" href="#security">Security</a></li>-->
             </ul>
 
             <!-- Now just place your content -->
@@ -220,11 +220,19 @@
                   <header>
                     <h3>Dashboard Settings</h3>	
                   </header>
-                  Add dashboard settings here...
-                  <div class="nl-submit-wrap">
-                    <button class="nl-submit" type="submit">save settings</button>
-                  </div>
-                  <div class="nl-overlay"></div>
+                  <div class="nl-theme"><h5>Theme</h5>
+                  Set the theme for the dashboard to 
+                  <select id="themeDB-select">
+                    <option value="monokai">monokai</option>
+                    <option value="github">github</option>
+                    <option value="xcode">xcode</option>
+                    <option value="obsidian">obsidian</option>
+                    <option value="vs">vs</option>
+                    <option value="arta">arta</option>
+                    <option value="railcasts">railcasts</option>
+                    <option value="chalkboard">chalkboard</option>
+                    <option value="dark">dark</option>
+                  </select>.<div class="nl-overlay"></div></div>
                 </div>
               </div>
               <div id="interface" class="tabs-content">
@@ -232,19 +240,11 @@
                   <header>
                     <h3>Interface Settings</h3>	
                   </header>
-                  <!--<form class="nl-form">-->
                   Add interface settings here...
-                  <!-- Code hinting is  
-<select id="hint-select">
-<option value="hint-enabled" selected>enabled</option>
-<option value="hint-disabled">disabled</option>
-</select>.<br>
-in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>-->
                   <div class="nl-submit-wrap">
                     <button class="nl-submit" type="submit">save settings</button>
                   </div>
                   <div class="nl-overlay"></div>
-<!--</form>-->
                 </div>
               </div>
               <div id="security" class="tabs-content">
@@ -252,16 +252,13 @@ in <input type="text" value="" placeholder="any city" data-subline="For example:
                   <header>
                     <h3>Security Settings</h3>	
                   </header>
-                  <!--<form class="nl-form">-->
                   Add security settings here...
                   <div class="nl-submit-wrap">
                     <button class="nl-submit" type="submit">save settings</button>
                   </div>
                   <div class="nl-overlay"></div>
-<!--</form>-->
                 </div>
               </div>
-              <!--<div class="nl-overlay"></div>-->
             </form>
           </div>
         </div>

@@ -29,9 +29,9 @@ var awesomplete = true;
       hccolors = ['#7cb5ec', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1', '#434348', "#3E6B48", "#009989"];
 
   var terminal1, terminal2, terminal3, terminal4, bgcolor, lineShape, points, cmdinput1, cmdinput2, cmdinput3, cmdinput4, autocompleter1, autocompleter2,
-      autocompleter3, autocompleter4, helpExt, parseData, isValidColor, welcome1, awesompleteDivUl1, awesompleteDivUl2, awesompleteDivUl3, awesompleteDivUl4, allCommands, parseDataPolar, parseDataSample, parseDataSamplen, createBaseChart, createPolarChart, createSampleChart, consoleCommands, nlform;
+      autocompleter3, autocompleter4, helpExt, parseData, isValidColor, welcome1, awesompleteDivUl1, awesompleteDivUl2, awesompleteDivUl3, awesompleteDivUl4, allCommands, parseDataPolar, parseDataSample, parseDataSamplen, createBaseChart, createPolarChart, createSampleChart, consoleCommands, nlform, gutters;
 
-  var theme1, theme2, theme3, theme4;
+  var theme1, theme2, theme3, theme4, themeDB;
 
   var chartDiv1 = document.getElementById('chart-div1'),
       chartDiv2 = document.getElementById('chart-div2'),
@@ -47,7 +47,12 @@ var awesomplete = true;
       theme1Select = document.getElementById('theme1-select'),
       theme2Select = document.getElementById('theme2-select'),
       theme3Select = document.getElementById('theme3-select'),
-      theme4Select = document.getElementById('theme4-select');
+      theme4Select = document.getElementById('theme4-select'),
+      themeDBSelect = document.getElementById('themeDB-select');
+
+
+  var pageDB = document.getElementById('page-dashboard');
+  var splitDB = document.querySelectorAll('.split-dashboard');
 
   var matchThemes = /^monokai|^github|^xcode|^obsidian|^vs|^arta|^railcasts|^chalkboard|^dark/;
 
@@ -252,6 +257,12 @@ var awesomplete = true;
     theme4 = localStorage.getItem("theme4");
   }
 
+  if (localStorage.getItem("themeDB") === null) {
+    themeDB = "monokai";
+  } else {
+    themeDB = localStorage.getItem("themeDB");
+  }
+
   window.onload = function() {
     Ink.requireModules( ['Ink.Dom.Selector_1','Ink.UI.Tabs_1'], function( Selector, Tabs ) {
       var tabsObj = new Tabs('#myTabs');
@@ -268,6 +279,7 @@ var awesomplete = true;
     theme2Select.value = theme2;
     theme3Select.value = theme3;
     theme4Select.value = theme4;
+    themeDBSelect.value = themeDB;
 
     theme1Select.addEventListener('change', function() {
       localStorage.setItem("theme1", this.value);
@@ -287,6 +299,31 @@ var awesomplete = true;
     theme4Select.addEventListener('change', function() {
       localStorage.setItem("theme4", this.value);
       terminal4.setTheme(this.value);
+    });
+
+    themeDBSelect.addEventListener('change', function() {
+      for (let gutter of gutters) {
+        gutter.classList.remove('gutter-' + themeDB);
+      }
+
+      for (let dashboard of splitDB) {
+        dashboard.classList.remove('split-content-' + themeDB);
+      }
+
+      pageDB.classList.remove('border-dashboard-' + themeDB);
+
+      localStorage.setItem("themeDB", this.value);
+      themeDB = this.value;
+
+      for (let gutter of gutters) {
+        gutter.classList.add('gutter-' + themeDB);
+      }
+
+      for (let dashboard of splitDB) {
+        dashboard.classList.add('split-content-' + themeDB);
+      }
+
+      pageDB.classList.add('border-dashboard-' + themeDB);
     });
 
     if (awesomplete) {
@@ -417,12 +454,17 @@ var awesomplete = true;
       }
     });
 
-    var gutters = document.querySelectorAll('.gutter');
-    console.log(gutters);
+    gutters = document.querySelectorAll('.gutter');
 
     for (let gutter of gutters) {
-      gutter.classList.add('gutter-monokai');
+      gutter.classList.add('gutter-' + themeDB);
     }
+
+    for (let dashboard of splitDB) {
+      dashboard.classList.add('split-content-' + themeDB);
+    }
+
+    pageDB.classList.add('border-dashboard-' + themeDB);
 
     // Initialize settings form
     nlform = new NLForm( document.getElementById( 'nl-form' ) );
@@ -1534,7 +1576,7 @@ var awesomplete = true;
             optionsDashboard = {
               enableMarkers: false,
               navButtonEnabled: false,
-              legY: 100
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The line chart needs to know what data to plot.  Please see <em>help line</em> for more information.' + sufans;

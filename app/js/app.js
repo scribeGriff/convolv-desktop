@@ -186,7 +186,6 @@
 		// set current
 		if( id ) {
 			current = futureCurrent;
-      console.log(pages[current].id);
 		}
 		
 		// close menu..
