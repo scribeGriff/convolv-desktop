@@ -405,12 +405,9 @@ var awesomplete = true;
       gutterSize: 8,
       cursor: 'col-resize',
       onDragEnd: function() {
-        console.log("all charts need reflow");
-        console.log(Highcharts.charts);
         for (let chart of Highcharts.charts) {
           if (chart !== undefined) {
             if (chart.renderTo.id.includes("console")) {
-              console.log(chart.renderTo.id);
               chart.reflow();
             }
           }
@@ -424,11 +421,9 @@ var awesomplete = true;
       gutterSize: 8,
       cursor: 'row-resize',
       onDragEnd: function() {
-        console.log("drag console 1 and 3");
         for (let chart of Highcharts.charts) {
           if (chart !== undefined) {
             if (chart.renderTo.id.includes("1") || chart.renderTo.id.includes("3")) {
-              console.log(chart.renderTo.id);
               chart.reflow();
             }
           }
@@ -442,11 +437,9 @@ var awesomplete = true;
       gutterSize: 8,
       cursor: 'row-resize',
       onDragEnd: function() {
-        console.log("drag console 2 and 4");
         for (let chart of Highcharts.charts) {
           if (chart !== undefined) {
             if (chart.renderTo.id.includes("2") || chart.renderTo.id.includes("4")) {
-              console.log(chart.renderTo.id);
               chart.reflow();
             }
           }
@@ -2899,8 +2892,7 @@ var awesomplete = true;
           return preerr + 'The yaxis command adds a label to the y axis of a chart.  Please see <em>help yaxis</em> for more information.' + sufans;
         } else {
           var chart = terminal.getChart(),
-              chartDashboard = terminal.getChartDashboard(),
-              tempArg;
+              chartDashboard, tempArg;
           if (chart) {
             try {
               tempArg = parser.eval(args[0]);
@@ -2914,6 +2906,10 @@ var awesomplete = true;
             try {
               chart.yAxis[0].setTitle({
                 text: args[0]
+              });
+              chartDashboard = terminal.getChartDashboard();
+              chartDashboard.yAxis[0].setTitle({
+                text: args[0],
               });
             } catch(error) {
               return preerr + 'The label for the y axis seems to be improperly formatted.  Please see <em>help yaxis</em> for more information.' + sufans;
@@ -2929,8 +2925,7 @@ var awesomplete = true;
           return preerr + 'The title command adds a title to a chart if one exists.  Please see <em>help title</em> for more information.' + sufans;
         } else {
           var chart = terminal.getChart(),
-              chartDashboard = terminal.getChartDashboard(),
-              tempArg;
+              chartDashboard, tempArg;
           if (chart) {
             for (var i = 0; i < args.length; i++) {
               try {
@@ -2947,8 +2942,17 @@ var awesomplete = true;
               chart.setTitle({
                 text: args[0]
               });
+              chartDashboard = terminal.getChartDashboard();
+              chartDashboard.setTitle({
+                text: args[0]
+              });
               if (args[1] !== null && isValidColor(args[1])) {
                 chart.setTitle({
+                  style: { 
+                    color: args[1] 
+                  } 
+                });
+                chartDashboard.setTitle({
                   style: { 
                     color: args[1] 
                   } 
@@ -2968,8 +2972,7 @@ var awesomplete = true;
           return preerr + 'The subtitle command adds a subtitle to a chart if one exists.  Please see <em>help subtitle</em> for more information.' + sufans;
         } else {
           var chart = terminal.getChart(),
-              chartDashboard = terminal.getChartDashboard(),
-              tempArg;
+              chartDashboard, tempArg;
           if (chart) {
             for (var i = 0; i < args.length; i++) {
               try {
@@ -2986,8 +2989,17 @@ var awesomplete = true;
               chart.setTitle(null, {
                 text: args[0]
               });
+              chartDashboard = terminal.getChartDashboard();
+              chartDashboard.setTitle(null, {
+                text: args[0]
+              });
               if (args[1] !== null && isValidColor(args[1])) {
                 chart.setTitle(null, {
+                  style: { 
+                    color: args[1] 
+                  } 
+                });
+                chartDashboard.setTitle(null, {
                   style: { 
                     color: args[1] 
                   } 
@@ -3007,8 +3019,7 @@ var awesomplete = true;
           return preerr + 'The series command adds a custom name to each series of a chart if one exists.  Please see <em>help series</em> for more information.' + sufans;
         } else {
           var chart = terminal.getChart(),
-              chartDashboard = terminal.getChartDashboard(),
-              tempArg;
+              chartDashboard, tempArg;
           if (chart) {
             for (var k = 0; k < args.length; k++) {
               try {
@@ -3021,11 +3032,15 @@ var awesomplete = true;
                 // No need to catch this, leave args[k] as is.
               }
             }
-            try {
+            try {  
+            chartDashboard = terminal.getChartDashboard();
               // Check if this is a sample plot which uses both column and scatter to make the stem.
               if (chart.series.length > 1 && chart.series[1].options.linkedTo === ':previous') {
                 for (var i = 0; i < chart.series.length; i += 2) {
                   chart.series[i].update({
+                    name: args[~~(i / 2)]
+                  }, false);
+                  chartDashboard.series[i].update({
                     name: args[~~(i / 2)]
                   }, false);
                 }
@@ -3034,9 +3049,13 @@ var awesomplete = true;
                   chart.series[j].update({
                     name: args[j]
                   }, false);
+                  chartDashboard.series[j].update({
+                    name: args[j]
+                  }, false);
                 }
               }
               chart.redraw();
+              chartDashboard.redraw();
             } catch(error) {
               return preerr + 'The text labels for the series command seems to be improperly formatted.  Please see <em>help series</em> for more information.' + sufans;
             }
