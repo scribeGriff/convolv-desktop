@@ -1039,14 +1039,24 @@ var awesomplete = true;
     });
   };
 
-  createPolarChart = function createPolarChart(container, chartData) {
+  createPolarChart = function createPolarChart(container, chartData, dashBoardChart) {
 
-    var interval = 360 / chartData[0].data.length;
+    var interval = 360 / chartData[0].data.length,
+        navButEnabled = true,
+        legPosY = 0;
+    
+    if (dashBoardChart) {
+      navButEnabled = false;
+      legPosY = 50;
+    }
 
     return Highcharts.chart(container, {
       chart: {
         polar: true,
         plotBorderWidth: 0
+      },
+      legend: {
+        y: legPosY
       },
       pane: {
         startAngle: 0,
@@ -1089,18 +1099,34 @@ var awesomplete = true;
       title: {
         text: ' '
       },
-      series: chartData
+      series: chartData,
+      navigation: {
+        buttonOptions: {
+          enabled: navButEnabled
+        }
+      }
     });
   };
 
-  createSampleChart = function createSampleChart(container, chartData) {
+  createSampleChart = function createSampleChart(container, chartData, dashBoardChart) {
 
+    var navButEnabled = true,
+        legPosY = 0;
+    
+    if (dashBoardChart) {
+      navButEnabled = false;
+      legPosY = 50;
+    }
+    
     return Highcharts.chart(container, {
       chart: {
         zoomType: 'x',
         panning: true,
         panKey: 'shift',
         plotBorderWidth: 1
+      },
+      legend: {
+        y: legPosY
       },
       tooltip: {
         valueDecimals: 6,
@@ -1143,7 +1169,12 @@ var awesomplete = true;
       title: {
         text: ' '
       },
-      series: chartData
+      series: chartData,
+      navigation: {
+        buttonOptions: {
+          enabled: navButEnabled
+        }
+      }
     });
   };
 
@@ -1280,10 +1311,18 @@ var awesomplete = true;
       area: function area() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               type: 'area',
               enableMarkers: false,
               opacityFill: 0.5
+            },
+            optionsDashboard = {
+              type: 'area',
+              enableMarkers: false,
+              opacityFill: 0.5,
+              navButtonEnabled: false,
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The area chart needs to know what data to plot.  Please see <em>help area</em> for more information.' + sufans;
@@ -1336,11 +1375,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -1349,6 +1393,7 @@ var awesomplete = true;
       bar: function bar() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               type: 'bar',
               enableMarkers: false,
@@ -1358,6 +1403,18 @@ var awesomplete = true;
               yLineWidth: 0,
               yTickWidth: 0,
               yOffset: 0
+            },
+            optionsDashboard = {
+              type: 'bar',
+              enableMarkers: false,
+              xGridLineWidth: 0,
+              xLabelsY: null,
+              xOffset: 0,
+              yLineWidth: 0,
+              yTickWidth: 0,
+              yOffset: 0,
+              navButtonEnabled: false,
+              legY: 50
             };
 
         if (args.length === 0) {
@@ -1412,11 +1469,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -1425,6 +1487,7 @@ var awesomplete = true;
       column: function column() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               type: 'column',
               enableMarkers: false,
@@ -1434,6 +1497,18 @@ var awesomplete = true;
               yLineWidth: 0,
               yTickWidth: 0,
               yOffset: 0
+            },
+            optionsDashboard = {
+              type: 'column',
+              enableMarkers: false,
+              xGridLineWidth: 0,
+              xLabelsY: null,
+              xOffset: 0,
+              yLineWidth: 0,
+              yTickWidth: 0,
+              yOffset: 0,
+              navButtonEnabled: false,
+              legY: 50
             };
 
         if (args.length === 0) {
@@ -1487,11 +1562,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -1500,9 +1580,16 @@ var awesomplete = true;
       curve: function curve() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               type: 'spline',
               enableMarkers: false
+            },
+            optionsDashboard = {
+              type: 'spline',
+              enableMarkers: false,
+              navButtonEnabled: false,
+              legY: 50
             };
 
         if (args.length === 0) {
@@ -1556,11 +1643,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -1647,9 +1739,16 @@ var awesomplete = true;
       curvepts: function curvepts() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               type: 'spline',
               enableMarkers: true
+            },
+            optionsDashboard = {
+              type: 'spline',
+              enableMarkers: true,
+              navButtonEnabled: false,
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The curvepts chart needs to know what data to plot.  Please see <em>help curvepts</em> for more information.' + sufans;
@@ -1702,11 +1801,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -1715,8 +1819,14 @@ var awesomplete = true;
       linepts: function linepts() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               enableMarkers: true
+            },
+            optionsDashboard = {
+              enableMarkers: true,
+              navButtonEnabled: false,
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The linepts chart needs to know what data to plot.  Please see <em>help linepts</em> for more information.' + sufans;
@@ -1769,11 +1879,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -1782,6 +1897,7 @@ var awesomplete = true;
       scatter: function scatter() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               type: 'line',
               zoomDir: 'xy',
@@ -1805,6 +1921,32 @@ var awesomplete = true;
                   }
                 }
               }
+            },
+            optionsDashboard = {
+              type: 'line',
+              zoomDir: 'xy',
+              enableMarkers: true,
+              xEndOnTic: true,
+              xStartOnTic: true,
+              scatterOps: {
+                marker: {
+                  radius: 5,
+                  states: {
+                    hover: {
+                      lineColor: 'rgb(100,100,100)'
+                    }
+                  }
+                },
+                states: {
+                  hover: {
+                    marker: {
+                      enabled: false
+                    }
+                  }
+                }
+              },
+              navButtonEnabled: false,
+              legY: 50
             };
 
         if (args.length === 0) {
@@ -1858,11 +2000,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -1871,10 +2018,18 @@ var awesomplete = true;
       linlog: function linlog() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               enableMarkers: false,
               ymTickInterval: 0.1,
               yType: 'logarithmic'
+            },
+            optionsDashboard = {
+              enableMarkers: false,
+              ymTickInterval: 0.1,
+              yType: 'logarithmic',
+              navButtonEnabled: false,
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The linlog chart needs to know what data to plot.  Please see <em>help linlog</em> for more information.' + sufans;
@@ -1927,11 +2082,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -1940,10 +2100,18 @@ var awesomplete = true;
       loglin: function loglin() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               enableMarkers: false,
               xmTickInterval: 0.1,
               xType: 'logarithmic'
+            },
+            optionsDashboard = {
+              enableMarkers: false,
+              xmTickInterval: 0.1,
+              xType: 'logarithmic',
+              navButtonEnabled: false,
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The loglin chart needs to know what data to plot.  Please see <em>help loglin</em> for more information.' + sufans;
@@ -1996,6 +2164,8 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // If we are not providing x axis data, need to make sure it starts counting at 1.  Default is 0.
@@ -2006,6 +2176,9 @@ var awesomplete = true;
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
 
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
+
         // If all went well, just return an empty string to the terminal.
         return '';
       },
@@ -2013,12 +2186,22 @@ var awesomplete = true;
       loglog: function loglog() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               enableMarkers: false,
               xmTickInterval: 0.1,
               xType: 'logarithmic',
               ymTickInterval: 0.1,
               yType: 'logarithmic'
+            },
+            optionsDashboard = {
+              enableMarkers: false,
+              xmTickInterval: 0.1,
+              xType: 'logarithmic',
+              ymTickInterval: 0.1,
+              yType: 'logarithmic',
+              navButtonEnabled: false,
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The loglog chart needs to know what data to plot.  Please see <em>help loglog</em> for more information.' + sufans;
@@ -2071,6 +2254,8 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // If we are not providing x axis data, need to make sure it starts counting at 1.  Default is 0.
@@ -2082,6 +2267,9 @@ var awesomplete = true;
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
 
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
+
         // If all went well, just return an empty string to the terminal.
         return '';
       },
@@ -2089,10 +2277,18 @@ var awesomplete = true;
       linlogpts: function linlogpts() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               enableMarkers: true,
               ymTickInterval: 0.1,
               yType: 'logarithmic'
+            },
+            optionsDashboard = {
+              enableMarkers: true,
+              ymTickInterval: 0.1,
+              yType: 'logarithmic',
+              navButtonEnabled: false,
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The linlogpts chart needs to know what data to plot.  Please see <em>help linlogpts</em> for more information.' + sufans;
@@ -2145,11 +2341,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -2158,10 +2359,18 @@ var awesomplete = true;
       loglinpts: function loglinpts() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               enableMarkers: true,
               xmTickInterval: 0.1,
               xType: 'logarithmic'
+            },
+            optionsDashboard = {
+              enableMarkers: true,
+              xmTickInterval: 0.1,
+              xType: 'logarithmic',
+              navButtonEnabled: false,
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The loglinpts chart needs to know what data to plot.  Please see <em>help loglinpts</em> for more information.' + sufans;
@@ -2214,6 +2423,8 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // If we are not providing x axis data, need to make sure it starts counting at 1.  Default is 0.
@@ -2225,6 +2436,9 @@ var awesomplete = true;
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
 
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
+
         // If all went well, just return an empty string to the terminal.
         return '';
       },
@@ -2232,12 +2446,22 @@ var awesomplete = true;
       loglogpts: function loglogpts() {
         var dataSeries,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               enableMarkers: true,
               xmTickInterval: 0.1,
               xType: 'logarithmic',
               ymTickInterval: 0.1,
               yType: 'logarithmic'
+            },
+            optionsDashboard = {
+              enableMarkers: true,
+              xmTickInterval: 0.1,
+              xType: 'logarithmic',
+              ymTickInterval: 0.1,
+              yType: 'logarithmic',
+              navButtonEnabled: false,
+              legY: 50
             };
         if (args.length === 0) {
           return preerr + 'The loglogpts chart needs to know what data to plot.  Please see <em>help loglogpts</em> for more information.' + sufans;
@@ -2290,6 +2514,8 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // If we are not providing x axis data, need to make sure it starts counting at 1.  Default is 0.
@@ -2301,6 +2527,9 @@ var awesomplete = true;
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
 
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
+
         // If all went well, just return an empty string to the terminal.
         return '';
       },
@@ -2311,12 +2540,21 @@ var awesomplete = true;
             dataObj,
             finalObj,
             chart = terminal.getChart(),
+            chartDashboard = terminal.getChartDashboard(),
             options = {
               type: 'pie',
               title: 'Pie Chart',
               legLayout: 'horizontal',
               legAlign: 'center',
               legVerticalAlign: 'bottom'
+            },
+            optionsDashboard = {
+              type: 'pie',
+              title: 'Pie Chart',
+              legLayout: 'horizontal',
+              legAlign: 'center',
+              legVerticalAlign: 'bottom',
+              navButtonEnabled: false
             };
 
         if (args.length === 0) {
@@ -2389,11 +2627,16 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div and with the required options.
         chart = createBaseChart(chartDiv, dataSeries, options);
         terminal.setChart(chart);
+
+        chartDashboard = createBaseChart(chartConsole, dataSeries, optionsDashboard);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -2403,7 +2646,9 @@ var awesomplete = true;
       polar: function polar() {
         var dataSeries,
             chart = terminal.getChart(),
-            argsLen = args.length;
+            chartDashboard = terminal.getChartDashboard(),
+            argsLen = args.length,
+            dashBoardChart = false;
 
         if (argsLen === 0) {
           return preerr + 'The polar chart needs to know what data to plot.  Please see <em>help polar</em> for more information.' + sufans;
@@ -2452,11 +2697,18 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div.
-        chart = createPolarChart(chartDiv, dataSeries);
+        chart = createPolarChart(chartDiv, dataSeries, dashBoardChart);
         terminal.setChart(chart);
+        
+        dashBoardChart = true;
+        
+        chartDashboard = createPolarChart(chartDiv, dataSeries, dashBoardChart);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -2468,7 +2720,9 @@ var awesomplete = true;
       sample: function sample() {
         var dataSeries = [],
             chart = terminal.getChart(),
-            argsLen = args.length;
+            chartDashboard = terminal.getChartDashboard(),
+            argsLen = args.length,
+            dashBoardChart = false;
 
         if (argsLen === 0) {
           return preerr + 'The sample chart needs to know what data to plot.  Please see <em>help sample</em> for more information.' + sufans;
@@ -2517,11 +2771,18 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div.
-        chart = createSampleChart(chartDiv, dataSeries);
+        chart = createSampleChart(chartDiv, dataSeries, dashBoardChart);
         terminal.setChart(chart);
+        
+        dashBoardChart = true;
+        
+        chartDashboard = createSampleChart(chartDiv, dataSeries, dashBoardChart);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -2531,7 +2792,9 @@ var awesomplete = true;
       samplen: function samplen() {
         var dataSeries = [],
             chart = terminal.getChart(),
-            argsLen = args.length;
+            chartDashboard = terminal.getChartDashboard(),
+            argsLen = args.length,
+            dashBoardChart = false;
 
         if (argsLen === 0) {
           return preerr + 'The samplen chart needs to know what data to plot.  Please see <em>help samplen</em> for more information.' + sufans;
@@ -2580,11 +2843,18 @@ var awesomplete = true;
         if (chart) {
           chart.destroy();
           terminal.setChart(chart);
+          chartDashboard.destroy();
+          terminal.setChartDashboard(chartDashboard);
         }
 
         // Chart the data in the correct div.
-        chart = createSampleChart(chartDiv, dataSeries);
+        chart = createSampleChart(chartDiv, dataSeries, dashBoardChart);
         terminal.setChart(chart);
+        
+        dashBoardChart = true;
+        
+        chartDashboard = createSampleChart(chartDiv, dataSeries, dashBoardChart);
+        terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
         return '';
@@ -2596,7 +2866,7 @@ var awesomplete = true;
           return preerr + 'The xaxis command adds a label to the x axis of a chart.  Please see <em>help xaxis</em> for more information.' + sufans;
         } else {
           var chart = terminal.getChart(),
-              tempArg;
+              chartDashboard, tempArg;
           if (chart) {
             try {
               tempArg = parser.eval(args[0]);
@@ -2609,6 +2879,10 @@ var awesomplete = true;
             }
             try {
               chart.xAxis[0].setTitle({
+                text: args[0],
+              });
+              chartDashboard = terminal.getChartDashboard();
+              chartDashboard.xAxis[0].setTitle({
                 text: args[0],
               });
             } catch(error) {
@@ -2625,6 +2899,7 @@ var awesomplete = true;
           return preerr + 'The yaxis command adds a label to the y axis of a chart.  Please see <em>help yaxis</em> for more information.' + sufans;
         } else {
           var chart = terminal.getChart(),
+              chartDashboard = terminal.getChartDashboard(),
               tempArg;
           if (chart) {
             try {
@@ -2654,6 +2929,7 @@ var awesomplete = true;
           return preerr + 'The title command adds a title to a chart if one exists.  Please see <em>help title</em> for more information.' + sufans;
         } else {
           var chart = terminal.getChart(),
+              chartDashboard = terminal.getChartDashboard(),
               tempArg;
           if (chart) {
             for (var i = 0; i < args.length; i++) {
@@ -2692,6 +2968,7 @@ var awesomplete = true;
           return preerr + 'The subtitle command adds a subtitle to a chart if one exists.  Please see <em>help subtitle</em> for more information.' + sufans;
         } else {
           var chart = terminal.getChart(),
+              chartDashboard = terminal.getChartDashboard(),
               tempArg;
           if (chart) {
             for (var i = 0; i < args.length; i++) {
@@ -2730,6 +3007,7 @@ var awesomplete = true;
           return preerr + 'The series command adds a custom name to each series of a chart if one exists.  Please see <em>help series</em> for more information.' + sufans;
         } else {
           var chart = terminal.getChart(),
+              chartDashboard = terminal.getChartDashboard(),
               tempArg;
           if (chart) {
             for (var k = 0; k < args.length; k++) {
