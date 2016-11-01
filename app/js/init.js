@@ -9,6 +9,9 @@ var Terminal = require('./js/terminal.js');
 var math = require('mathjs');
 var moment = require('moment');
 
+const BrowserWindow = require('electron').remote.BrowserWindow;
+const path = require('path');
+
 /* For debugging autocomplete and later perhaps as an option to disable. */
 var awesomplete = true;
 
@@ -1037,7 +1040,7 @@ var awesomplete = true;
     var interval = 360 / chartData[0].data.length,
         navButEnabled = true,
         legPosY = 0;
-    
+
     if (dashBoardChart) {
       navButEnabled = false;
       legPosY = 50;
@@ -1105,12 +1108,12 @@ var awesomplete = true;
 
     var navButEnabled = true,
         legPosY = 0;
-    
+
     if (dashBoardChart) {
       navButEnabled = false;
       legPosY = 50;
     }
-    
+
     return Highcharts.chart(container, {
       chart: {
         zoomType: 'x',
@@ -1268,7 +1271,7 @@ var awesomplete = true;
                 }
               }
             }
-            _buffer.push('<tr><td>' + 'Link' + '</td><td class="answer">' + '<a href="http://mathjs.org/docs/reference/functions/' + args[0] + '.html" target="_blank">' + args[0] + ' docs at mathjs.org</a>' + '</td></tr>');
+            _buffer.push('<tr><td>' + 'Link' + '</td><td class="answer">' + '<a class="js-external-link" href="http://mathjs.org/docs/reference/functions/' + args[0] + '.html" target="_blank">' + args[0] + ' docs at mathjs.org</a>' + '</td></tr>');
             _buffer.push('</table>');
             return _buffer.join('');
           } catch(error) {
@@ -2697,9 +2700,9 @@ var awesomplete = true;
         // Chart the data in the correct div.
         chart = createPolarChart(chartDiv, dataSeries, dashBoardChart);
         terminal.setChart(chart);
-        
+
         dashBoardChart = true;
-        
+
         chartDashboard = createPolarChart(chartDiv, dataSeries, dashBoardChart);
         terminal.setChartDashboard(chartDashboard);
 
@@ -2771,9 +2774,9 @@ var awesomplete = true;
         // Chart the data in the correct div.
         chart = createSampleChart(chartDiv, dataSeries, dashBoardChart);
         terminal.setChart(chart);
-        
+
         dashBoardChart = true;
-        
+
         chartDashboard = createSampleChart(chartDiv, dataSeries, dashBoardChart);
         terminal.setChartDashboard(chartDashboard);
 
@@ -2843,9 +2846,9 @@ var awesomplete = true;
         // Chart the data in the correct div.
         chart = createSampleChart(chartDiv, dataSeries, dashBoardChart);
         terminal.setChart(chart);
-        
+
         dashBoardChart = true;
-        
+
         chartDashboard = createSampleChart(chartDiv, dataSeries, dashBoardChart);
         terminal.setChartDashboard(chartDashboard);
 
@@ -3033,7 +3036,7 @@ var awesomplete = true;
               }
             }
             try {  
-            chartDashboard = terminal.getChartDashboard();
+              chartDashboard = terminal.getChartDashboard();
               // Check if this is a sample plot which uses both column and scatter to make the stem.
               if (chart.series.length > 1 && chart.series[1].options.linkedTo === ':previous') {
                 for (var i = 0; i < chart.series.length; i += 2) {
@@ -3410,11 +3413,12 @@ var awesomplete = true;
 
       },
 
-      // Opens a new tab or window with a full set of documentation.
+      // Displays a new window with a full set of documentation.
       docs: function docs() {
-        var docsWindow,
-            docsUrl = "pages/documentation/index.html";
-        docsWindow = window.open(docsUrl);
+
+        var win = BrowserWindow.fromId(2);
+        win.show();
+
         return '';
       },
 

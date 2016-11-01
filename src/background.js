@@ -14,7 +14,7 @@ import createWindow from './helpers/window';
 // in config/env_xxx.json file.
 import env from './env';
 
-var mainWindow;
+var mainWindow, docsWindow;
 
 var setApplicationMenu = function () {
   var menus = [editMenuTemplate];
@@ -35,7 +35,7 @@ if (env.name !== 'production') {
 app.on('ready', function () {
   setApplicationMenu();
 
-  var mainWindow = createWindow('main', {
+  mainWindow = createWindow('main', {
     minWidth: 800, 
     minHeight: 600,
     width: 980,
@@ -48,8 +48,24 @@ app.on('ready', function () {
   if (env.name === 'development') {
     mainWindow.openDevTools();
   }
-});
 
-app.on('window-all-closed', function () {
-  app.quit();
+  mainWindow.on('close', function () {
+    app.quit();
+  });
+
+  docsWindow = createWindow('docs', {
+    minWidth: 800, 
+    minHeight: 600,
+    width: 880,
+    height: 660, 
+    autoHideMenuBar: true,
+    show: false
+  });
+
+  docsWindow.loadURL('file://' + __dirname + '/pages/documentation/index.html');
+
+  docsWindow.on('close', (e) => {
+    e.preventDefault();
+    docsWindow.hide();
+  });
 });
