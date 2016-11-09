@@ -1,11 +1,12 @@
 /* global DataTable: false */
 /* jshint node: true, browser: true, esnext: true */
+
 (function () {
   "use strict";
 
   var tableDiv, dataKey, importedData, tableID, datatable, 
       pageNum, lastPageNum, keyString, termString, termName;
-  
+
   var updatePageNumber, buildHtmlTable, addAllColumnHeaders;
 
   var _table_ = document.createElement('table'),
@@ -15,26 +16,29 @@
       _tbody_ = document.createElement('tbody');
 
   window.onload = function() {
-    tableDiv = document.getElementById("tablediv");
-    pageNum = document.getElementById("pagenumber");
-    dataKey = window.dataKey.split("_")[0];
-    termName = window.dataKey.split("_")[1];
-    importedData = JSON.parse(localStorage.getItem(window.dataKey));
-    if (importedData !== null) {
-      tableDiv.appendChild(buildHtmlTable(importedData));
-      tableID = document.getElementById("datatable");
-      datatable = new DataTable(tableID, {
-        pageSize: 20,
-        sort: '*'
-      });
-      keyString = dataKey.charAt(1).toUpperCase() + dataKey.slice(2);
-      termString = termName.charAt(0).toUpperCase() + termName.slice(1,-1) + ' ' + termName.charAt(termName.length - 1);
-      document.title = "Raw Data for " + keyString + " at " + termString;
-      document.getElementById("title").innerHTML = keyString + " (" + termString + ")";
-      window.addEventListener('click', updatePageNumber, false);
-      lastPageNum = datatable.getLastPageNumber();
-    }
-    pageNum.innerHTML = "page " + datatable.getCurrentPage() + " of " + lastPageNum;
+    require('electron').ipcRenderer.on('ping', (event, message) => {
+      dataKey = message.split("_")[0];
+      termName = message.split("_")[1];
+      tableDiv = document.getElementById("tablediv");
+      pageNum = document.getElementById("pagenumber");
+      importedData = JSON.parse(localStorage.getItem(message));
+      console.log(importedData);
+      if (importedData !== null) {
+        tableDiv.appendChild(buildHtmlTable(importedData));
+        tableID = document.getElementById("datatable");
+        datatable = new DataTable(tableID, {
+          pageSize: 20,
+          sort: '*'
+        });
+        keyString = dataKey.charAt(1).toUpperCase() + dataKey.slice(2);
+        termString = termName.charAt(0).toUpperCase() + termName.slice(1,-1) + ' ' + termName.charAt(termName.length - 1);
+        document.title = "Raw Data for " + keyString + " at " + termString;
+        document.getElementById("title").innerHTML = keyString + " (" + termString + ")";
+        window.addEventListener('click', updatePageNumber, false);
+        lastPageNum = datatable.getLastPageNumber();
+        pageNum.innerHTML = "page " + datatable.getCurrentPage() + " of " + lastPageNum;
+      }
+    });
   };
 
   updatePageNumber = function updatePageNumber() {
