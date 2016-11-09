@@ -1,4 +1,4 @@
-/* global NLForm: false, Split: false, katex: false, document: false, Awesomplete: false, Papa: false, saveAs: false, Ink: false */
+/* global NLForm: false, Split: false, katex: false, document: false, Awesomplete: false, saveAs: false, Ink: false */
 /* jshint node: true, browser: true, loopfunc: true, esnext: true */
 
 var Highcharts = require('highcharts');
@@ -8,6 +8,7 @@ require('highcharts/modules/exporting')(Highcharts);
 var Terminal = require('./js/terminal.js');
 var math = require('mathjs');
 var moment = require('moment');
+var Papa = require('papaparse');
 
 const BrowserWindow = require('electron').remote.BrowserWindow;
 const path = require('path');
@@ -3391,26 +3392,47 @@ var awesomplete = true;
         return terminal.getImportLog();
       },
 
-      // Opens a new tab or window with the most recent imported data from a url.
+      // Opens a new window with the most recent imported data from a url.
       // Also accepts one optional argument of a data storage key if a previously
       // imported data is desired.
       datatable: function datatable() {
-        var dataWindow,
-            tableUrl = "pages/datatable/index.html";
+        const tableUrl = path.join('file://', __dirname, '/pages/datatable/index.html');
+        let dataWindow = new BrowserWindow({
+          minWidth: 800, 
+          minHeight: 600,
+          width: 880, 
+          height: 660, 
+          show: false, 
+          autoHideMenuBar: true 
+        });
+        dataWindow.on('close', function () { 
+          dataWindow = null; 
+        });
+
         if (args.length === 0) {
-          dataWindow = window.open(tableUrl);
-          dataWindow.dataKey = localStorage.getItem(termName + "_table");
-          return '';
+          var data = localStorage.getItem(termName + "_table");
+          if (data === null) {
+            return 'No data has been imported to this console.';
+          } else {
+            dataWindow.loadURL(tableUrl);
+            dataWindow.webContents.on('did-finish-load', () => {
+              dataWindow.webContents.send('ping', localStorage.getItem(termName + "_table"));
+            });
+            dataWindow.show();
+            return '';
+          }
         } else {
           if (localStorage.getItem(args[0]) !== null) {
-            dataWindow = window.open(tableUrl);
-            dataWindow.dataKey = args[0];
+            dataWindow.loadURL(tableUrl);
+            dataWindow.webContents.on('did-finish-load', () => {
+              dataWindow.webContents.send('ping', args[0]);
+            });
+            dataWindow.show();
             return '';
           } else {
             return 'There is nothing stored locally using key ' + args[0] + '.';
           }
         }
-
       },
 
       // Displays a new window with a full set of documentation.
