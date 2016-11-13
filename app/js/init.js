@@ -419,6 +419,7 @@ var awesomplete = true;
       }
     });
 
+    Split(['#chart-dashboard1', '#chart-dashboard3'], {
       direction: 'vertical',
       sizes: [50, 50],
       gutterSize: 8,
@@ -434,6 +435,7 @@ var awesomplete = true;
       }
     });
 
+    Split(['#chart-dashboard2', '#chart-dashboard4'], {
       direction: 'vertical',
       sizes: [50, 50],
       gutterSize: 8,
