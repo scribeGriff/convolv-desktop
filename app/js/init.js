@@ -24,10 +24,10 @@ var awesomplete = true;
       sufans = '</span>',
       precisionVar;  // default output format significant digits.
 
-  var termName1 = 'terminal1',
-      termName2 = 'terminal2',
-      termName3 = 'terminal3',
-      termName4 = 'terminal4';
+  var termName1 = 'console1',
+      termName2 = 'console2',
+      termName3 = 'console3',
+      termName4 = 'console4';
 
   var colors = ["#261C21", "#B0254F", "#DE4126", "#EB9605", "#3E6B48", "#CE1836", "#F85931", "#009989"],
       hccolors = ['#7cb5ec', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1', '#434348', "#3E6B48", "#009989"];
@@ -42,10 +42,10 @@ var awesomplete = true;
       chartDiv3 = document.getElementById('chart-div3'),
       chartDiv4 = document.getElementById('chart-div4');
 
-  var chartConsole1 = document.getElementById('chart-console1'),
-      chartConsole2 = document.getElementById('chart-console2'),
-      chartConsole3 = document.getElementById('chart-console3'),
-      chartConsole4 = document.getElementById('chart-console4');
+  var chartDashboard1 = document.getElementById('chart-dashboard1'),
+      chartDashboard2 = document.getElementById('chart-dashboard2'),
+      chartDashboard3 = document.getElementById('chart-dashboard3'),
+      chartDashboard4 = document.getElementById('chart-dashboard4');
 
   var precSelect = document.getElementById('prec-select'),
       theme1Select = document.getElementById('theme1-select'),
@@ -331,10 +331,10 @@ var awesomplete = true;
     });
 
     if (awesomplete) {
-      cmdinput1 = document.getElementById("autocomp-terminal1");
-      cmdinput2 = document.getElementById("autocomp-terminal2");
-      cmdinput3 = document.getElementById("autocomp-terminal3");
-      cmdinput4 = document.getElementById("autocomp-terminal4");
+      cmdinput1 = document.getElementById("autocomp-console1");
+      cmdinput2 = document.getElementById("autocomp-console2");
+      cmdinput3 = document.getElementById("autocomp-console3");
+      cmdinput4 = document.getElementById("autocomp-console4");
       autocompleter1 = new Awesomplete(cmdinput1, {
         autoFirst: true, 
         filter: function(text, input) {
@@ -393,13 +393,13 @@ var awesomplete = true;
       autocompleter4.list = allCommands;
 
       // For terminal to detect if command completion should be above or below input
-      awesompleteDivUl1 = document.querySelector('#terminal1 div.awesomplete > ul');
+      awesompleteDivUl1 = document.querySelector('#console1 div.awesomplete > ul');
       terminal1.setAwesompleteDiv(awesompleteDivUl1);
-      awesompleteDivUl2 = document.querySelector('#terminal2 div.awesomplete > ul');
+      awesompleteDivUl2 = document.querySelector('#console2 div.awesomplete > ul');
       terminal2.setAwesompleteDiv(awesompleteDivUl2);
-      awesompleteDivUl3 = document.querySelector('#terminal3 div.awesomplete > ul');
+      awesompleteDivUl3 = document.querySelector('#console3 div.awesomplete > ul');
       terminal3.setAwesompleteDiv(awesompleteDivUl3);
-      awesompleteDivUl4 = document.querySelector('#terminal4 div.awesomplete > ul');
+      awesompleteDivUl4 = document.querySelector('#console4 div.awesomplete > ul');
       terminal4.setAwesompleteDiv(awesompleteDivUl4);
     }
 
@@ -411,7 +411,7 @@ var awesomplete = true;
       onDragEnd: function() {
         for (let chart of Highcharts.charts) {
           if (chart !== undefined) {
-            if (chart.renderTo.id.includes("console")) {
+            if (chart.renderTo.id.includes("dashboard")) {
               chart.reflow();
             }
           }
@@ -419,7 +419,6 @@ var awesomplete = true;
       }
     });
 
-    Split(['#chart-console1', '#chart-console3'], {
       direction: 'vertical',
       sizes: [50, 50],
       gutterSize: 8,
@@ -435,7 +434,6 @@ var awesomplete = true;
       }
     });
 
-    Split(['#chart-console2', '#chart-console4'], {
       direction: 'vertical',
       sizes: [50, 50],
       gutterSize: 8,
@@ -476,7 +474,7 @@ var awesomplete = true;
   terminal1 = new Terminal(termName1, {welcome: welcome1, prompt: '1 ', theme: theme1}, {
     execute: function execute(cmd, args) {
       var parser = terminal1.getParser();
-      var cmds = consoleCommands(cmd, args, terminal1, chartDiv1, chartConsole1, parser, termName1);
+      var cmds = consoleCommands(cmd, args, terminal1, chartDiv1, chartDashboard1, parser, termName1);
 
       if (typeof cmds[cmd] !== 'function') {
         var result, katstr, formres;
@@ -540,7 +538,7 @@ var awesomplete = true;
   terminal2 = new Terminal(termName2, {welcome: "Console 2", prompt: '2 ', theme: theme2}, {
     execute: function execute(cmd, args) {
       var parser = terminal2.getParser();
-      var cmds = consoleCommands(cmd, args, terminal2, chartDiv2, chartConsole2, parser, termName2);
+      var cmds = consoleCommands(cmd, args, terminal2, chartDiv2, chartDashboard2, parser, termName2);
 
       if (typeof cmds[cmd] !== 'function') {
         var result, katstr, formres;
@@ -604,7 +602,7 @@ var awesomplete = true;
   terminal3 = new Terminal(termName3, {welcome: "Console 3", prompt: '3 ', theme: theme3}, {
     execute: function execute(cmd, args) {
       var parser = terminal3.getParser();
-      var cmds = consoleCommands(cmd, args, terminal3, chartDiv3, chartConsole3, parser, termName3);
+      var cmds = consoleCommands(cmd, args, terminal3, chartDiv3, chartDashboard3, parser, termName3);
 
       if (typeof cmds[cmd] !== 'function') {
         var result, katstr, formres;
@@ -668,7 +666,7 @@ var awesomplete = true;
   terminal4 = new Terminal(termName4, {welcome: "Console 4", prompt: '4 ', theme: theme4}, {
     execute: function execute(cmd, args) {
       var parser = terminal4.getParser();
-      var cmds = consoleCommands(cmd, args, terminal4, chartDiv4, chartConsole4, parser, termName4);
+      var cmds = consoleCommands(cmd, args, terminal4, chartDiv4, chartDashboard4, parser, termName4);
 
       if (typeof cmds[cmd] !== 'function') {
         var result, katstr, formres;
@@ -3092,23 +3090,23 @@ var awesomplete = true;
       loadvars: function loadvars() {
         var loadedvars = JSON.parse(localStorage.getItem(termName));
         if (loadedvars === null) {
-          return preans + 'There are no stored variables in this terminal.' + sufans;
+          return preans + 'There are no stored variables in this console.' + sufans;
         }
         for(var key in loadedvars) {
           if (loadedvars.hasOwnProperty(key)) {
             parser.set(key, loadedvars[key]);
           }
         }
-        return preans + 'Terminal variables have been loaded.' + sufans;
+        return preans + 'Console variables have been loaded.' + sufans;
       },
 
       // Store terminal variables in storage using localForage.
       savevars: function savevars() {
         if (!Object.keys(parser.scope).length) {
-          return preans + 'There are currently no variables defined in this terminal.' + sufans;
+          return preans + 'There are currently no variables defined in this console.' + sufans;
         }
         localStorage.setItem(termName, JSON.stringify(parser.scope));
-        return preans + 'Terminal variables have been saved.' + sufans;
+        return preans + 'Console variables have been saved.' + sufans;
       },
 
       // Export data to a local file in csv format.
