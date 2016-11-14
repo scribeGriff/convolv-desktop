@@ -47,27 +47,6 @@
     "Type": "command"
   },
   {
-    "Category": "Utilities",
-    "Description": "An optional dark console theme.",
-    "Example": "theme arta",
-    "Name": "arta",
-    "See also": [
-      "chalkboard",
-      "dark",
-      "github",
-      "monokai",
-      "obsidian",
-      "railcasts",
-      "vs",
-      "xcode",
-      "theme"
-    ],
-    "Syntax": [
-      "theme arta"
-    ],
-    "Type": "command"
-  },
-  {
     "Category": "Chart",
     "Description": "Creates a bar chart with space delimited arguments. If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0. If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.  If x axis values are provided and are strings, they are used as categories.",
     "Example": "cat = [\"New York\", \"Los Angeles\", \"Seattle\", \"Boston\", \"Portland\"]; s1 = [47, 25, 102, 16, 33]; s2 = [191, 97, 29, 77, 112]; s3 = [35, 19, 209, 80, 67]; bar cat s1 cat s2 cat s3",
@@ -91,27 +70,6 @@
     "Syntax": [
       "bar [1,12,56,102.4,-1]",
       "bar x1 y1 ... xn yn"
-    ],
-    "Type": "command"
-  },
-  {
-    "Category": "Utilities",
-    "Description": "An optional dark console theme.",
-    "Example": "theme chalkboard",
-    "Name": "chalkboard",
-    "See also": [
-      "arta",
-      "dark",
-      "github",
-      "monokai",
-      "obsidian",
-      "railcasts",
-      "vs",
-      "xcode",
-      "theme"
-    ],
-    "Syntax": [
-      "theme chalkboard"
     ],
     "Type": "command"
   },
@@ -279,27 +237,6 @@
   },
   {
     "Category": "Utilities",
-    "Description": "An optional dark console theme.",
-    "Example": "theme dark",
-    "Name": "dark",
-    "See also": [
-      "chalkboard",
-      "arta",
-      "github",
-      "monokai",
-      "obsidian",
-      "railcasts",
-      "vs",
-      "xcode",
-      "theme"
-    ],
-    "Syntax": [
-      "theme dark"
-    ],
-    "Type": "command"
-  },
-  {
-    "Category": "Utilities",
     "Description": "With no arguments, opens a new window or tab and displays a table of the most recent data imported using the <code>importurl</code> command.  If an importurl data key is known (from the <code>importlog</code> of a previous import), then this key can be provided as the sole argument and the data from that import will be displayed",
     "Example": "importurl 'http://www.openfisheries.org/api/landings.json' <br> datatable",
     "Name": "datatable",
@@ -341,7 +278,7 @@
   },
   {
     "Category": "Utilities",
-    "Description": "Opens a new tab or window with a complete set of documentation for Convolv extensions to the Mathjs library as well as all available console and charting commands.",
+    "Description": "Opens a new window with a complete set of documentation for Convolv extensions to the Mathjs library as well as all available console and charting commands.",
     "Example": "docs",
     "Name": "docs",
     "See also": [
@@ -490,27 +427,6 @@
       "gettoken('keyName')"
     ],
     "Type": "function"
-  },
-  {
-    "Category": "Utilities",
-    "Description": "An optional light console theme.",
-    "Example": "theme github",
-    "Name": "github",
-    "See also": [
-      "chalkboard",
-      "dark",
-      "arta",
-      "monokai",
-      "obsidian",
-      "railcasts",
-      "vs",
-      "xcode",
-      "theme"
-    ],
-    "Syntax": [
-      "theme github"
-    ],
-    "Type": "command"
   },
   {
     "Category": "Utilities",
@@ -868,48 +784,6 @@
   },
   {
     "Category": "Utilities",
-    "Description": "The default dark console theme.",
-    "Example": "theme monokai",
-    "Name": "monokai",
-    "See also": [
-      "chalkboard",
-      "dark",
-      "github",
-      "arta",
-      "obsidian",
-      "railcasts",
-      "vs",
-      "xcode",
-      "theme"
-    ],
-    "Syntax": [
-      "theme monokai"
-    ],
-    "Type": "command"
-  },
-  {
-    "Category": "Utilities",
-    "Description": "An optional dark console theme.",
-    "Example": "theme obsidian",
-    "Name": "obsidian",
-    "See also": [
-      "chalkboard",
-      "dark",
-      "github",
-      "monokai",
-      "arta",
-      "railcasts",
-      "vs",
-      "xcode",
-      "theme"
-    ],
-    "Syntax": [
-      "theme obsidian"
-    ],
-    "Type": "command"
-  },
-  {
-    "Category": "Utilities",
     "Description": "For functions that return multiple values, this function retrieves the value whose key is outd. It is a shortcut for <code>getdata(\"outd\", myVar);</code>",
     "Example": "num = [1, 1, 1, 1, 1, 1]; nn = -2:3; den = [1, 2, 1]; dn = -1: 1; qrem = deconv(num, den, nn, dn); q = outq(qrem); r = outr(qrem); qn = outqn(qrem); rn = outrn(qrem); d = outd(qrem); dn = outdn(qrem); polystring(q, qn, r, rn, d, dn)",
     "Name": "outd",
@@ -1202,27 +1076,6 @@
     "Type": "function"
   },
   {
-    "Category": "Utilities",
-    "Description": "An optional dark console theme.",
-    "Example": "theme railcasts",
-    "Name": "railcasts",
-    "See also": [
-      "chalkboard",
-      "dark",
-      "github",
-      "monokai",
-      "obsidian",
-      "arta",
-      "vs",
-      "xcode",
-      "theme"
-    ],
-    "Syntax": [
-      "theme railcasts"
-    ],
-    "Type": "command"
-  },
-  {
     "Category": "Chart",
     "Description": "Displays sample data at discrete sample points with a stem plot.  Arguments are space delimited.  The x axis is automatically generated as uniform steps from 0 to length of data.  Accepts a single array of sample values or multiple arrays. Does not accept timing information (see <code>samplen</code>).",
     "Example": "sample gauss() gauss()",
@@ -1461,23 +1314,16 @@
   },
   {
     "Category": "Utilities",
-    "Description": "With no arguments, displays the current theme of the console.  If given a space delimited argument, sets the theme to the argument value.",
-    "Example": "theme obsidian",
+    "Description": "Displays the current theme of the console.",
+    "Example": "theme",
     "Name": "theme",
     "See also": [
-      "arta",
-      "chalkboard",
-      "dark",
-      "github",
-      "monokai",
-      "obsidian",
-      "railcasts",
-      "xcode",
-      "vs"
+      "precision",
+      "help",
+      "clear"
     ],
     "Syntax": [
-      "theme",
-      "theme xcode"
+      "theme"
     ],
     "Type": "command"
   },
@@ -1547,27 +1393,6 @@
     "Type": "command"
   },
   {
-    "Category": "Utilities",
-    "Description": "An optional light console theme.",
-    "Example": "theme vs",
-    "Name": "vs",
-    "See also": [
-      "chalkboard",
-      "dark",
-      "github",
-      "monokai",
-      "obsidian",
-      "railcasts",
-      "arta",
-      "xcode",
-      "theme"
-    ],
-    "Syntax": [
-      "theme vs"
-    ],
-    "Type": "command"
-  },
-  {
     "Category": "Chart",
     "Description": "Adds a label to the x axis of the current chart.  The label argument is space delimited.  String name can be single or double quoted but apostrophes must be escaped with a backslash.",
     "Example": "x = 1:10; y = square(x); samplen x y <br> xaxis 'samples (n)'",
@@ -1590,27 +1415,6 @@
     ],
     "Syntax": [
       "xaxis 'This is the x axis'"
-    ],
-    "Type": "command"
-  },
-  {
-    "Category": "Utilities",
-    "Description": "An optional light console theme.",
-    "Example": "theme xcode",
-    "Name": "xcode",
-    "See also": [
-      "chalkboard",
-      "dark",
-      "github",
-      "monokai",
-      "obsidian",
-      "railcasts",
-      "vs",
-      "arta",
-      "theme"
-    ],
-    "Syntax": [
-      "theme xcode"
     ],
     "Type": "command"
   },
