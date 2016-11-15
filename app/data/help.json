@@ -168,20 +168,6 @@
     "Type": "function"
   },
   {
-    "Category": "Utilities",
-    "Description": "Opens a new tab or window with a showcase of the incredible open source libraries that made Convolv possible.",
-    "Example": "credits",
-    "Name": "credits",
-    "See also": [
-      "help",
-      "docs"
-    ],
-    "Syntax": [
-      "credits"
-    ],
-    "Type": "command"
-  },
-  {
     "Category": "Chart",
     "Description": "Creates a curve (spline) chart with space delimited arguments. Individual points are not displayed except on mouse over.  If only a single argument is provided, it is assumed to be y axis data and is plotted against a linear x axis starting from point 0.  If more than one argument is provided, it is expected to be as alternating arrays of x data and y data.",
     "Example": "x = -3:16; y1 = square(x); y2 = cube(x); curve x y1 x y2",

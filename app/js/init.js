@@ -3442,14 +3442,6 @@ var awesomplete = true;
         win.show();
 
         return '';
-      },
-
-      // Opens a new tab or window with a list of credits.
-      credits: function credits() {
-        var creditsWindow,
-            creditsUrl = "pages/credits/index.html";
-        creditsWindow = window.open(creditsUrl);
-        return '';
       }
     };
   };
