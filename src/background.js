@@ -40,7 +40,10 @@ app.on('ready', function () {
     minHeight: 600,
     width: 980,
     height: 760, 
-    autoHideMenuBar: true
+    autoHideMenuBar: true,
+    webPreferences: {
+      backgroundThrottling: false
+    }
   });
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');
@@ -59,7 +62,10 @@ app.on('ready', function () {
     width: 880,
     height: 660, 
     autoHideMenuBar: true,
-    show: false
+    show: false,
+    webPreferences: {
+      backgroundThrottling: false
+    }
   });
 
   docsWindow.loadURL('file://' + __dirname + '/pages/documentation/index.html');

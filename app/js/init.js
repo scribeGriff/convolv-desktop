@@ -4,6 +4,7 @@
 var Highcharts = require('highcharts');
 require('highcharts/highcharts-more')(Highcharts);
 require('highcharts/modules/exporting')(Highcharts);
+require('highcharts/modules/offline-exporting')(Highcharts);
 
 var Terminal = require('./js/terminal.js');
 var math = require('mathjs');
@@ -58,20 +59,6 @@ var awesomplete = true;
   var pageDB = document.getElementById('page-dashboard');
   var splitDB = document.querySelectorAll('.split-dashboard');
 
-  var matchThemes = /^monokai|^github|^xcode|^obsidian|^vs|^arta|^railcasts|^chalkboard|^dark/;
-
-  var bgcolors = {
-    monokai: "#272822",
-    github: "#f8f8f8",
-    xcode: "#fff",
-    obsidian: "#282b2e",
-    vs: "#fff",
-    arta: "#222",
-    railcasts: "#232323",
-    chalkboard: "darkslategray",
-    dark: "#040004"
-  };
-
   helpExt = require("./data/help.json");
   allCommands = require("./data/aclist.json");
 
@@ -80,6 +67,15 @@ var awesomplete = true;
     chart: {
       backgroundColor: 'transparent',
       plotBorderWidth: 0
+    },
+    exporting: {
+      fallbackToExportServer: false,
+      filename: "convolv-chart",
+      chartOptions: {
+        chart: {
+          backgroundColor: "#FFFFFF"
+        }
+      }
     },
     plotOptions: {
       series: {
