@@ -52,7 +52,9 @@ app.on('ready', function () {
     mainWindow.openDevTools();
   }
 
-  mainWindow.on('close', function () {
+  mainWindow.on('closed', function () {
+    mainWindow = null;
+    docsWindow = null;
     app.quit();
   });
 
@@ -71,7 +73,9 @@ app.on('ready', function () {
   docsWindow.loadURL('file://' + __dirname + '/pages/documentation/index.html');
 
   docsWindow.on('close', (e) => {
-    e.preventDefault();
-    docsWindow.hide();
+    if (mainWindow !== null) {
+      e.preventDefault();
+      docsWindow.hide();
+    }
   });
 });

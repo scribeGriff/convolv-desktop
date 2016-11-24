@@ -1,6 +1,6 @@
 {
   "name": "convolv-desktop",
-  "productName": "Convolv DT",
+  "productName": "Convolv Desktop",
   "description": "A quad console desktop app for working with data",
   "version": "0.1.0",
   "author": "Richard Griffith <sjefen@convo.lv>",
@@ -14,8 +14,8 @@
     "url": "https://github.com/scribeGriff/math-terminal"
   },
   "dependencies": {
-    "fs-jetpack": "^0.9.0",
-    "highcharts": "^4.2.5",
+    "fs-jetpack": "^0.10.2",
+    "highcharts": "4.2.5",
     "mathjs": "^3.4.1",
     "moment": "^2.15.0",
     "papaparse": "^4.1.2"
