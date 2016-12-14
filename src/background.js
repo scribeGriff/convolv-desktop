@@ -5,6 +5,8 @@
 // It doesn't have any windows which you can see on screen, but we can open
 // window from here.
 
+import path from 'path';
+import url from 'url';
 import { app, Menu } from 'electron';
 import { devMenuTemplate } from './menu/dev_menu_template';
 import { editMenuTemplate } from './menu/edit_menu_template';
@@ -46,7 +48,13 @@ app.on('ready', function () {
     }
   });
 
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  //mainWindow.loadURL('file://' + __dirname + '/index.html');
+
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
 
   if (env.name === 'development') {
     mainWindow.openDevTools();
@@ -70,7 +78,13 @@ app.on('ready', function () {
     }
   });
 
-  docsWindow.loadURL('file://' + __dirname + '/pages/documentation/index.html');
+  //docsWindow.loadURL('file://' + __dirname + '/pages/documentation/index.html');
+
+  docsWindow.loadURL(url.format({
+    pathname: path.join(__dirname, '/pages/documentation/index.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
 
   docsWindow.on('close', (e) => {
     if (mainWindow !== null) {

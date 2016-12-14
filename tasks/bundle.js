@@ -12,22 +12,26 @@ var nodeBuiltInModules = ['assert', 'buffer', 'child_process', 'cluster',
 
 var electronBuiltInModules = ['electron'];
 
-var npmModulesUsedInApp = function () {
-    var appManifest = require('../app/package.json');
-    return Object.keys(appManifest.dependencies);
-};
-
 var generateExternalModulesList = function () {
-    return [].concat(nodeBuiltInModules, electronBuiltInModules, npmModulesUsedInApp());
+    var appManifest = jetpack.read('./package.json', 'json');
+    return [].concat(
+        nodeBuiltInModules,
+        electronBuiltInModules,
+        Object.keys(appManifest.dependencies),
+        Object.keys(appManifest.devDependencies)
+    );
 };
 
 var cached = {};
 
-module.exports = function (src, dest) {
+module.exports = function (src, dest, opts) {
+    opts = opts || {};
+    opts.rollupPlugins = opts.rollupPlugins || [];
     return rollup({
         entry: src,
         external: generateExternalModulesList(),
         cache: cached[src],
+        plugins: opts.rollupPlugins,
     })
     .then(function (bundle) {
         cached[src] = bundle;
