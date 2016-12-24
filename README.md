@@ -84,7 +84,6 @@ Convolv is only a reality thanks to these amazing Github projects:
 - [Bulma](https://github.com/jgthms/bulma)
 - [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
 - [ES6 Shim](https://github.com/paulmillr/es6-shim)
-- [Github Cards](https://github.com/lepture/github-cards)
 
 ## License
 

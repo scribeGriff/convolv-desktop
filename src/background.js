@@ -48,8 +48,6 @@ app.on('ready', function () {
     }
   });
 
-  //mainWindow.loadURL('file://' + __dirname + '/index.html');
-
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
@@ -77,8 +75,6 @@ app.on('ready', function () {
       backgroundThrottling: false
     }
   });
-
-  //docsWindow.loadURL('file://' + __dirname + '/pages/documentation/index.html');
 
   docsWindow.loadURL(url.format({
     pathname: path.join(__dirname, '/pages/documentation/index.html'),
