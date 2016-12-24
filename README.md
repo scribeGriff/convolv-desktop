@@ -1,11 +1,13 @@
-Convolv Desktop
+![Convolv Icon](https://convo.lv/img/convolv-avatar-forall.png) ![Convolv Logo](https://convo.lv/img/convolv-logo.png)
+
+The Convolv Desktop
 ==============
 A quad-console, desktop application based on the [Convolv web app](https://github.com/scribeGriff/math-terminal). It is built for the [Electron runtime](http://electron.atom.io) and uses the [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) as a development platform.
 
 ## Overview
 Convolv is a desktop application that provides four independant consoles and a central dashboard for the analysis of data. Built with vanilla JS and incorporating more than a dozen open-source libraries, the application allows a user to import data, perform numerical analyses and chart the results, both to the console's chart window as well as to a common dashboard shared by all four consoles.
 
-### Quick start
+### Quick Start
 
 This project uses the awesome [electron-boilerplate](https://github.com/szwacz/electron-boilerplate), so please refer to that repo for tips and notes regarding building and developing.  To quickly launch the app on your desktop in development mode, just enter the following commands:
 
@@ -15,6 +17,17 @@ cd convolv-desktop
 npm install
 npm start
 ```
+
+This assumes that you have [Node.js](https://nodejs.org) already installed.
+
+### Build the Application
+
+A pre-built setup executable for Windows is available in the dist folder or under the releases tab.  Simply download and launch the setup binary to install the Convolv application on your PC (note that this app is unsigned and you will need to grant permission for it to be installed).  For Mac and Linux users, or for PC users who would prefer to build their own setup executable, assuming you have already followed the steps in the Quick Start, simply run the following additional command:
+
+```
+npm run release
+```
+This will create a dist folder in your local project directory which will contain the necessary installation file for your computer.
 
 ## Details
 
