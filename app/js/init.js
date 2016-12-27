@@ -2700,7 +2700,7 @@ var awesomplete = true;
 
         dashBoardChart = true;
 
-        chartDashboard = createPolarChart(chartDiv, dataSeries, dashBoardChart);
+        chartDashboard = createPolarChart(chartConsole, dataSeries, dashBoardChart);
         terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
@@ -2774,7 +2774,7 @@ var awesomplete = true;
 
         dashBoardChart = true;
 
-        chartDashboard = createSampleChart(chartDiv, dataSeries, dashBoardChart);
+        chartDashboard = createSampleChart(chartConsole, dataSeries, dashBoardChart);
         terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.
@@ -2846,7 +2846,7 @@ var awesomplete = true;
 
         dashBoardChart = true;
 
-        chartDashboard = createSampleChart(chartDiv, dataSeries, dashBoardChart);
+        chartDashboard = createSampleChart(chartConsole, dataSeries, dashBoardChart);
         terminal.setChartDashboard(chartDashboard);
 
         // If all went well, just return an empty string to the terminal.

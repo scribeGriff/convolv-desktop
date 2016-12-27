@@ -22,7 +22,7 @@ This assumes that you have [Node.js](https://nodejs.org) already installed.
 
 ### Build the Application
 
-A pre-built setup executable for Windows is available in the dist folder or under the releases tab.  Simply download and launch the setup binary to install the Convolv application on your PC (note that this app is unsigned and you will need to grant permission for it to be installed).  For Mac and Linux users, or for PC users who would prefer to build their own setup executable, assuming you have already followed the steps in the Quick Start, simply run the following additional command:
+A pre-built setup executable for Windows is available in the dist folder.  Simply download and launch the setup binary to install the Convolv application on your PC (note that this app is unsigned and you will need to grant permission for it to be installed).  For Mac and Linux users, or for PC users who would prefer to build their own setup executable, assuming you have already followed the steps in the Quick Start, just run the following additional command:
 
 ```
 npm run release
